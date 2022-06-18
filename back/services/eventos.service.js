@@ -15,9 +15,9 @@ async function create(evento){
     await client.connect()
     const db = client.db('armaelequipo')
     const collection = db.collection('eventos')
-    const eventoInserted = await collection.insertOne(evento)
+    await collection.insertOne(evento)
     await client.close()
-    return eventoInserted.ops[0]
+    return evento
 }
 
 export {

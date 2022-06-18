@@ -1,9 +1,9 @@
-import Evento from './components/Evento/Evento';
+import Eventos from './components/Eventos/Eventos';
 import './App.css';
 
 function App() {
   return (
-    <Evento />
+    <Eventos />
   )
 }
 
