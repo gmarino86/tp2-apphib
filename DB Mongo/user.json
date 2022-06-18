@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "619d8165e7ee5f3f7c416e5b"
+  },
+  "name": "Gaston",
+  "lastname": "Marino",
+  "mail": "gmarino86@hotmail.com",
+  "pass": "123"
+},{
+  "_id": {
+    "$oid": "619d8187e7ee5f3f7c416e5c"
+  },
+  "name": "Federico",
+  "lastname": "Garabello",
+  "mail": "fede@hotmail.com",
+  "pass": "123"
+},{
+  "_id": {
+    "$oid": "619ef5ffe7ee5f3f7c416e5d"
+  },
+  "name": "Pepe",
+  "lastname": "Flores",
+  "mail": "pepe@flores.com",
+  "pass": "123"
+}]
