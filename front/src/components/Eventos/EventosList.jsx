@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 function EventoJugadorListItem({ event }) {
-    console.log('%cEventosList.jsx line:2 event', 'color: #007acc;', event);
     return (
     <li>
-        <p>{event.titulo}</p>
-        <a href={`/evento/${event._id}`}>Ver más</a>
+        <Link to={`/evento/${event._id}`}>{event.titulo}</Link>
+        <p>{event.lugar}</p>
+        <hr />
     </li>
     );
 }
