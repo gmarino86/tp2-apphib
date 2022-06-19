@@ -1,14 +1,13 @@
 import EventosList from "./EventosList";
 import { useState, useEffect } from "react";
-
+import * as EventosServices from '../../services/eventos.services';
 
 function Evento() {
 
   const [eventos, setEventos] = useState([]);
   
   useEffect(() => {
-    fetch('http://localhost:3333/api/eventos')
-    .then(res => res.json())
+    EventosServices.find()
     .then(data => setEventos(data));
   }, [])
 

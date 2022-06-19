@@ -11,6 +11,15 @@ async function find(){
     return eventos
 }
 
+async function findByID(idEvento){
+    await client.connect()
+    const db = client.db('armaelequipo')
+    const collection = db.collection('eventos')
+    const evento = await collection.findOne({_id: ObjectId(idEvento)})
+    await client.close()
+    return evento
+}
+
 async function create(evento){
     await client.connect()
     const db = client.db('armaelequipo')
@@ -22,5 +31,6 @@ async function create(evento){
 
 export {
     find,
+    findByID,
     create
 }
