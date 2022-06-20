@@ -18,11 +18,27 @@ function Evento() {
   }]);
 
   useEffect(() => {
-    EventosServices.find().then((data) => setEventos(data));
+    EventosServices.find()
+    .then((data) => {
+      setEventos(data)
+      console.log(data)
+    });
   }, []);
 
   return (
     <div>
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            Armá el Equipo
+          </Link>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link " aria-current="page" to="/">Contactos</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <h1>Eventos</h1>
       <ul>
         {eventos.map((evento) => (
