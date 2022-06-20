@@ -1,6 +1,6 @@
 Entidades
 - Usuarios
 - Eventos
-- Chats
+- Contactos
 
 
