@@ -1,13 +1,13 @@
 import express from 'express';
 import * as EventosController from '../controllers/eventos.controller.js';
 // Modulo de autenticacion
-import { authenticate } from '../middleware/auth.middleware.js';
+// import { authenticate } from '../middleware/auth.middleware.js';
 
 
 const router = express.Router();
 
-router.get("/api/eventos", [], EventosController.find)
-router.get("/api/eventos/:idEvento", EventosController.findByID)
-router.post("/api/eventos", EventosController.create)
+router.get("/", EventosController.find)
+router.get("/:idEvento", EventosController.findByID)
+router.post("/", EventosController.create)
 
 export default router;
