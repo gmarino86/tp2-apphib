@@ -58,7 +58,7 @@ function EventoView() {
               </div>
             </div>
 
-            <div className="card">
+            <div className="card mb-3">
               <div className="card-header">
                 <h2>Participantes</h2>
               </div>
@@ -68,7 +68,7 @@ function EventoView() {
                     <ParticipanteLista key={jugador.idJ} jugador={jugador} />
                   ))
                 ) : (
-                  <li>No hay participantes</li>
+                  <li className="p-2 text-center">No hay participantes</li>
                 )}
               </ol>
             </div>
