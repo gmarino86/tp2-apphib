@@ -54,7 +54,7 @@ async function login({mail, pass}){
     if(userDB){
         const isMatch = await bcrypt.compare(pass, userDB.pass)
         if(isMatch){
-            return userDB
+            return {...userDB, pass: undefined}
         } else {
             throw new Error('Contraseña incorrecta')
         }
