@@ -79,8 +79,8 @@ function FormEventoNuevo(){
     return (
         <div>
             <NavbarPage></NavbarPage>
-            <h1>Evento nuevo</h1>
             <div className="container">
+                <h1>Evento nuevo</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="titulo" className="form-label">Título</label>
