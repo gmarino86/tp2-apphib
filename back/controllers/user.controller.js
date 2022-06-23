@@ -16,9 +16,7 @@ function login(req, res) {
     const user = req.body;
     return service.login(user)
     .then(user => res.status(200).json(user))
-    .catch(err => {
-        res.status(500).json(err)
-    })
+    .catch(err => res.status(500).json(err))
 }
 
 function findByID(req, res) {
