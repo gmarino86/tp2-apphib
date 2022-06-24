@@ -38,7 +38,7 @@ async function create(user){
 
         await collection.insertOne(userNew)
         await client.close()
-        return user
+        return {...userNew, pass: undefined}
     } else {
         throw new Error('El usuario ya existe')
     }

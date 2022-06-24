@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import * as UserService from '../services/user.services';
 import NavbarPage from './Navbar.page';
 
-function FormLogin(){
-
-    let navigate = useNavigate();
+function FormLogin({onLogin}){
 
     const [mail, setMail] = useState("")
     const [pass, setPass] = useState("")
+    const [error, setError] = useState("")
 
     function handleMail(e){
         setMail(e.target.value);
@@ -24,12 +22,17 @@ function FormLogin(){
             pass: pass,
         }
         UserService.login(userLogin)
-        .then(response => {
-            console.log('%cFormLogin.jsx line:28 response', 'color: #007acc;', response);
-            navigate('/', { replace: true });
+        .then((data) => {
+            console.log(data)
+            if(data.status === 200){
+                onLogin(data.user, data.token);
+            }
+            else{
+                setError(data.message);
+            }
         })
         .catch(error => {
-            console.log(error);
+            setError(error.message)
         })
     }
 
@@ -53,6 +56,7 @@ function FormLogin(){
                         <button className="btn btn-primary" type="submit">Ingresar</button>
                     </div>
                 </form>
+                {error && <div className="alert alert-danger">{error}</div>}
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Eventos from './components/Eventos/Eventos';
 import EventoView from './pages/EventoView';
 import FormEventoNuevo from './pages/FormEventoNuevo';
@@ -8,16 +8,32 @@ import PageNotFound from './pages/404';
 import './App.css';
 
 function App() {
+  const navigate = useNavigate();
+  useEffect (
+    () => {
+      console.log('%cApp.js line:16 token', 'color: #007acc;', localStorage.getItem('token'));
+      const token = localStorage.getItem('token');
+      if (!token || token === 'undefined') {
+        navigate('/login', { replace: true });
+      }
+    }, [])
+
+    function onLogin(user, token) {
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', token);
+      navigate('/', { replace: true });
+    }
+
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route path="/" element={<Eventos />} />
         <Route path="/evento/:id" element={<EventoView />} />
         <Route path="/evento/crear" element={<FormEventoNuevo />} />
-        <Route path="/login" element={<FormLogin />} />
+        <Route path="/login" element={<FormLogin onLogin={onLogin}/>} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 
