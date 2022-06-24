@@ -1,13 +1,17 @@
-function authenticate(req, res, next) {
-    if (req.header.authorization === 'Gaston') {
+import jwt from 'jsonwebtoken';
+
+function autorization(req, res, next) {
+    try {
+        const token = req.headers['auth-token'] 
+        let user = jwt.verify(token, 'secret');
+        req.user = user;
         next();
-    } else {
-        res.status(400).json({
-            message: 'Invalid credentials'
-        });
+    } catch {
+        res.status(401).json({ message: 'Invalid token' });
     }
 }
 
+
 export {
-    authenticate
+    autorization
 }
