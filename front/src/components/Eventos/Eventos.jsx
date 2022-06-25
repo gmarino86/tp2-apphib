@@ -30,11 +30,12 @@ function Evento() {
       <NavbarPage></NavbarPage>
       <div className="container">
         <h1>Eventos</h1>
-        <ul>
+
+        <div className="row mt-5">    
           {eventos.map((evento) => (
             <EventosList key={evento._id} event={evento} />
           ))}
-        </ul>
+        </div>
 
         <div id="container-floating">
           <div id="floating-button">

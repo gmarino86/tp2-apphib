@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "./../images/logo_aee.png"
 
 function Navbar() {
   return (
@@ -6,14 +7,15 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            Armá el Equipo
+              <img src={logo} width="50"></img>
           </Link>
+
           <ul className="navbar-nav">
             <li className="nav-item d-flex">
-              <Link className="nav-link px-2" aria-current="page" to="/login">
+              <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/login">
                 Login
               </Link>
-              <Link className="nav-link px-2" aria-current="page" to="/">
+              <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/">
                 Contactos
               </Link>
             </li>
