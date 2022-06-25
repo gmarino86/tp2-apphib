@@ -21,11 +21,7 @@ function Evento() {
 
   useEffect(() => {
     EventosServices.find().then((data) => {
-      if (data.status === 200) {
-        setEventos(data);
-      } else {
-        console.log("Error: "+ data.message);
-      }
+      setEventos(data);
     });
   }, []);
 

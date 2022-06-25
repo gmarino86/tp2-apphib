@@ -1,7 +1,13 @@
 const URL_API = 'http://localhost:3333'
 
 async function find() {
-    return fetch(`${URL_API}/api/eventos`)
+    return fetch(`${URL_API}/api/eventos`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token')
+        }
+    })
     .then(response => response.json())
     .catch(error => console.log(error))
 }
