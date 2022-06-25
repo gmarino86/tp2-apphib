@@ -2,11 +2,11 @@ import { ObjectId, MongoClient } from 'mongodb'
 
 const client = new MongoClient('mongodb://127.0.0.1:27017')
 
-async function find(){
+async function find(id){
     await client.connect()
     const db = client.db('armaelequipo')
     const collection = db.collection('eventos')
-    const eventos = await collection.find({}).toArray()
+    const eventos = await collection.find({"id_jugador.idJ": ObjectId(`${id}`)}).toArray()
     await client.close()
     return eventos
 }

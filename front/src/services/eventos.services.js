@@ -1,11 +1,13 @@
 const URL_API = 'http://localhost:3333'
 
 async function find() {
+    let id = JSON.parse(localStorage.getItem('user'))._id
     return fetch(`${URL_API}/api/eventos`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'auth-token': localStorage.getItem('token')
+            'auth-token': localStorage.getItem('token'),
+            'id-jugador': id
         }
     })
     .then(response => response.json())

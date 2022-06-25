@@ -15,90 +15,6 @@
         "$oid": "619d8165e7ee5f3f7c416e5b"
       },
       "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    },
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
     }
   ]
 },{
@@ -110,6 +26,18 @@
   "deporte": "Paddle",
   "dia": "2022-06-22",
   "hora": "21:00",
+  "cantParticipantes": "4",
+  "estado": 1,
+  "id_jugador": []
+},{
+  "_id": {
+    "$oid": "62b28d7f3a7002aef79d916b"
+  },
+  "titulo": "Tenis",
+  "lugar": "Calle Falsa 123",
+  "deporte": "Tenis",
+  "dia": "2022-06-22",
+  "hora": "20:00",
   "cantParticipantes": "4",
   "estado": 1,
   "id_jugador": []

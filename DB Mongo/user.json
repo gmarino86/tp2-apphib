@@ -5,7 +5,7 @@
   "name": "Gaston",
   "lastname": "Marino",
   "mail": "gmarino86@hotmail.com",
-  "pass": "123"
+  "pass": "$2b$10$wdiEK8Be3sm4i/kwjSxlouZNi62aSDtq/5anWC7tf38z67kUq5tl."
 },{
   "_id": {
     "$oid": "619d8187e7ee5f3f7c416e5c"
@@ -13,7 +13,7 @@
   "name": "Federico",
   "lastname": "Garabello",
   "mail": "fede@hotmail.com",
-  "pass": "123"
+  "pass": "$2b$10$wdiEK8Be3sm4i/kwjSxlouZNi62aSDtq/5anWC7tf38z67kUq5tl."
 },{
   "_id": {
     "$oid": "619ef5ffe7ee5f3f7c416e5d"
@@ -21,5 +21,21 @@
   "name": "Pepe",
   "lastname": "Flores",
   "mail": "pepe@flores.com",
-  "pass": "123"
+  "pass": "$2b$10$wdiEK8Be3sm4i/kwjSxlouZNi62aSDtq/5anWC7tf38z67kUq5tl."
+},{
+  "_id": {
+    "$oid": "62b28a45669ba5af0b5e966a"
+  },
+  "name": "Gaston",
+  "lastname": "Marino",
+  "mail": "gmarino86@gmail.com",
+  "pass": "$2b$10$wdiEK8Be3sm4i/kwjSxlouZNi62aSDtq/5anWC7tf38z67kUq5tl."
+},{
+  "_id": {
+    "$oid": "62b49f31739775aab723388e"
+  },
+  "name": "Post",
+  "lastname": "Man",
+  "mail": "post@man.com",
+  "pass": "$2b$10$gTHZ/sOgz6FEBm0v7FHe/uBB4BmvXNHJ7v758eWjD207HNvymwpZG"
 }]
