@@ -7,7 +7,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-              <img src={logo} width="50"></img>
+              <img src={logo} width="50" alt="Arma el Equipo"></img>
           </Link>
 
           <ul className="navbar-nav">
