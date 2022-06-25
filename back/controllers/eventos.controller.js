@@ -1,7 +1,8 @@
 import * as service from '../services/eventos.service.js';
 
 function find(req, res) {
-    return service.find()
+    let id = req.headers['id-jugador']
+    return service.find(id)
     .then(eventos => res.json(eventos))
 }
 

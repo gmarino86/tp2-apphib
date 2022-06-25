@@ -1,5 +1,5 @@
 import EventosList from "./EventosList";
-import { useState, useEffect, useNavigate } from "react";
+import { useState, useEffect } from "react";
 import * as EventosServices from "../../services/eventos.services";
 import { Link } from "react-router-dom";
 import NavbarPage from "../../pages/Navbar.page";
@@ -20,7 +20,8 @@ function Evento() {
   ]);
 
   useEffect(() => {
-    EventosServices.find().then((data) => {
+    EventosServices.find()
+    .then((data) => {
       setEventos(data);
     });
   }, []);

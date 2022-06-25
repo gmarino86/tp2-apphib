@@ -11,7 +11,6 @@ function ParticipantesLista({ jugador }) {
 
   useEffect(() => {
     UserServices.findByID(jugador.idJ).then((participante) => {
-      console.log("participante", participante);
       setParticipante(participante);
     });
   }, [jugador.idJ]);
@@ -25,9 +24,9 @@ function ParticipantesLista({ jugador }) {
         {jugador.actualizacion}
       </div>
       {jugador.estado === 1 ? (
-        <span className="badge bg-primary rounded-pill">va</span>
+        <span className="badge bg-primary rounded-pill">Participa</span>
       ) : (
-        <span className="badge bg-danger rounded-pill">no va</span>
+        <span className="badge bg-danger rounded-pill">No Participa</span>
       )}
     </li>
   );
