@@ -17,19 +17,9 @@ function FormLogin({onLogin}){
 
     function handleSubmit(e){
         e.preventDefault();
-        const userLogin = {
-            mail: mail,
-            pass: pass,
-        }
-        UserService.login(userLogin)
+        UserService.login({mail, pass})
         .then((data) => {
-            console.log(data)
-            if(data.status === 200){
-                onLogin(data.user, data.token);
-            }
-            else{
-                setError(data.message);
-            }
+            onLogin(data.user, data.token)
         })
         .catch(error => {
             setError(error.message)

@@ -15,7 +15,7 @@ function create(req, res) {
 
 function login(req, res) {
     const user = req.body;
-    return service.login(user)
+    service.login(user)
     .then(user => {
         const token = jwt.sign({
             id: user._id,
@@ -23,7 +23,8 @@ function login(req, res) {
             name: user.name,
         }, 'secret');
 
-        res.header('auth-token',token).status(200).json(user)
+        // res.header('auth-token',token).status(200).json(user)
+        res.status(200).json({user, token})
     })
     .catch(err => res.status(500).json(err))
 }
