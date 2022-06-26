@@ -9,6 +9,7 @@ import "./App.css";
 
 function App() {
   const navigate = useNavigate();
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token || token === "undefined") {
