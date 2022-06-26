@@ -26,6 +26,8 @@ function Evento() {
     });
   }, []);
 
+  console.log(eventos);
+
   return (
     <div>
       <NavbarPage></NavbarPage>
