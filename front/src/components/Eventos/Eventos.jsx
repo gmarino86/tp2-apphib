@@ -26,15 +26,13 @@ function Evento() {
     });
   }, []);
 
-  console.log(eventos);
-
   return (
     <div>
       <NavbarPage></NavbarPage>
       <div className="container">
         <h1>Eventos</h1>
 
-        <div className="row mt-5">    
+        <div className="row mt-3">    
           {eventos.map((evento) => (
             <EventosList key={evento._id} event={evento} />
           ))}

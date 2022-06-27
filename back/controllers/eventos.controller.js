@@ -24,7 +24,6 @@ function participacion(req, res) {
     const estado = req.headers['estado'];
     return service.participacion(idEvento, idJugador, estado)
     .then(response => {
-        console.log('%ceventos.controller.js line:26 evento', 'color: #007acc;', response);
         if (response) {
             res.json({"message": "Estás participando en este evento"})
         }else{

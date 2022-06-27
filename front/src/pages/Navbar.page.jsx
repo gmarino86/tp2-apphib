@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../images/logo-nuevo.jpeg"
 
 function Navbar() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
   let navigate = useNavigate();
 
   function logout(){
@@ -41,27 +41,27 @@ function Navbar() {
               <img src={logo} width="150" alt="Arma el Equipo"></img>
           </Link>
 
-          <div>
+          
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
+            <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul className="navbar-nav text-center">
                 <li className="nav-item">
                 <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/login">
                   Login
                 </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/">
+                  <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/contactos">
                   Contactos
                   </Link>
                 </li>
-                  <button className="btn btn-sm btn-outline-success my-2 my-sm-0" type="button" onClick={logout}>Salir</button>
+                <button className="btn btn-sm btn-outline-success my-2 my-sm-0" type="button" onClick={logout}>Salir</button>
               </ul>
             </div>
-          </div>
+          
         </div>
       </nav>
     </>

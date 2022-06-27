@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import Navbar from "./Navbar.page";
 
 function Contactos() {
+    useEffect(() => {
+        console.log("Entro a Contactos");
+    }
+    , []);
+
+
     return (
         <div>
             <Navbar />
