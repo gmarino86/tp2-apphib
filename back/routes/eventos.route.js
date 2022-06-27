@@ -6,7 +6,8 @@ import { autorization } from '../middleware/auth.middleware.js';
 const router = express.Router();
 
 router.get("/", [autorization], EventosController.find)
-router.get("/:idEvento", EventosController.findByID)
-router.post("/", EventosController.create)
+router.post("/", [autorization], EventosController.create)
+router.get("/:idEvento", [autorization], EventosController.findByID)
+router.patch("/:idEvento", [autorization], EventosController.participacion)
 
 export default router;

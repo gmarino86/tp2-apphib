@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import logo from "../images/logo_aee.png"
 
 function Navbar() {
+  const user = JSON.parse(localStorage.getItem("user"));
   let navigate = useNavigate();
+
   function logout(){
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -20,13 +22,14 @@ function Navbar() {
 
           <ul className="navbar-nav">
             <li className="nav-item d-flex">
-              <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/login">
-                Login
-              </Link>
               <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/">
-                Contactos
+              Contactos
               </Link>
+              { !user ? <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/login">
+                Login
+              </Link> :
               <button className="btn btn-sm btn-outline-success my-2 my-sm-0" type="button" onClick={logout}>Salir</button>
+              }
             </li>
           </ul>
         </div>

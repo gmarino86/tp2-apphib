@@ -1,4 +1,4 @@
-import { ObjectId, MongoClient } from 'mongodb'
+import { ObjectId, MongoClient, Int32 } from 'mongodb'
 
 const client = new MongoClient('mongodb://127.0.0.1:27017')
 
@@ -29,8 +29,26 @@ async function create(evento){
     return evento
 }
 
+async function participacion(idEvento, idJugador, estado){
+    await client.connect()
+    const db = client.db('armaelequipo')
+    const collection = db.collection('eventos')
+    await collection.updateOne({ _id: ObjectId(`${idEvento}`), "id_jugador.idJ" : ObjectId(`${idJugador}`)}, 
+    { 
+        $set: {
+            "id_jugador": [{
+                "idJ": ObjectId(`${idJugador}`),
+                "estado": Int32(estado)
+            }]
+        }
+    })
+    await client.close()
+    return true
+}
+
 export {
     find,
     findByID,
-    create
+    create,
+    participacion
 }

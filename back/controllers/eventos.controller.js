@@ -18,8 +18,25 @@ function findByID(req, res) {
     .then(evento => res.json(evento))
 }
 
+function participacion(req, res) {
+    const idEvento = req.params.idEvento;
+    const idJugador = req.headers['id-jugador'];
+    const estado = req.headers['estado'];
+    return service.participacion(idEvento, idJugador, estado)
+    .then(response => {
+        console.log('%ceventos.controller.js line:26 evento', 'color: #007acc;', response);
+        if (response) {
+            res.json({"message": "Estás participando en este evento"})
+        }else{
+            res.json({"message": "No estás participando en este evento"})
+        }
+    })
+}
+
 export {
     find,
     findByID,
-    create
+    create,
+    participacion
 }
+
