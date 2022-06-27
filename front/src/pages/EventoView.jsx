@@ -6,6 +6,7 @@ import ParticipanteLista from "../components/ParticipantesLista/ParticipantesLis
 
 function EventoView() {
   const { id } = useParams();
+
   const [evento, setEvento] = useState({
     _id: "",
     titulo: "",
@@ -18,11 +19,37 @@ function EventoView() {
     hora: "00:00",
   });
 
+  const [participacion, setParticipacion] = useState();
+  
   useEffect(() => {
     EventosServices.findByID(id)
-      .then((evento) => setEvento(evento))
+      .then((evento) => {
+        evento.id_jugador.forEach(j => {
+          if ( j.idJ === JSON.parse(localStorage.getItem('user'))._id ) {
+            setParticipacion(j.estado)
+          }
+        });
+        
+
+        setEvento(evento)
+      })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, participacion]);
+
+  function participar(){
+    EventosServices.participar(evento._id, JSON.parse(localStorage.getItem('user'))._id)
+    .then(res => {
+      console.log('%cEventoView.jsx line:33 res', 'color: #007acc;', res.message);
+    })
+  }
+
+  function noParticipar(){
+    EventosServices.participar(evento._id, JSON.parse(localStorage.getItem('user'))._id)
+    .then(res => {
+      console.log('%cEventoView.jsx line:33 res', 'color: #007acc;', res.message);
+    })
+  }
+
 
   return (
     <div>
@@ -75,9 +102,15 @@ function EventoView() {
           </div>
 
           <div className="container text-center">
-            <button className="btn btn-success p-3 w-50" type="submit">
-              Participar
-            </button>
+            { participacion === 0 ?  (
+              <button className="btn btn-success p-3 w-50" type="button" onClick={participar}>
+                Participar
+              </button>
+            ) : (
+              <button className="btn btn-danger p-3 w-50" type="button" onClick={noParticipar}>
+                No Participar
+              </button>
+            )} 
           </div>
         </div>
       </div>
