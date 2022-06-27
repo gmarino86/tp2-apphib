@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import * as EventosServices from "../services/eventos.services";
 import ParticipanteLista from "../components/ParticipantesLista/ParticipantesLista.component";
+
+
 // import { format } from 'date-fns'
 
 function EventoView() {
+  let navigate = useNavigate();
+
   const { id } = useParams();
 
   const [evento, setEvento] = useState({
@@ -29,7 +33,6 @@ function EventoView() {
             setParticipacion(j.estado)
           }
         });
-        
 
         setEvento(evento)
       })
@@ -39,14 +42,14 @@ function EventoView() {
   function participar(){
     EventosServices.participar(evento._id, JSON.parse(localStorage.getItem('user'))._id)
     .then(res => {
-      console.log('%cEventoView.jsx line:33 res', 'color: #007acc;', res.message);
+      window.location.reload();
     })
   }
 
   function noParticipar(){
-    EventosServices.participar(evento._id, JSON.parse(localStorage.getItem('user'))._id)
+    EventosServices.noParticipar(evento._id, JSON.parse(localStorage.getItem('user'))._id)
     .then(res => {
-      console.log('%cEventoView.jsx line:33 res', 'color: #007acc;', res.message);
+      window.location.reload();
     })
   }
 

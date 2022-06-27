@@ -53,9 +53,24 @@ async function participar(id, user ){
     .then(response => response.json())
 }
 
+
+async function noParticipar(id, user ){
+    return fetch(`${URL_API}/api/eventos/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token'),
+            'id-jugador': user,
+            'estado': 0
+        }
+    })  
+    .then(response => response.json())
+}
+
 export {  
     find,
     findByID,
     create,
-    participar
+    participar,
+    noParticipar
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function EventoJugadorListItem({ event }) {
   return (
         <>
-        <div className="col-md-4 mt-5">
+        <div className="col-md-4 mt-2">
           <div className="card card-01">
             <img className="card-img-top" src="https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?h=350&auto=compress&cs=tinysrgb" alt={event.titulo} />
             <div className="card-body">
