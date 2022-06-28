@@ -11,7 +11,6 @@ function BuscarContactos(){
         e.preventDefault();
         ContactService.findContactsNew(nombre)
         .then(contacts => {
-            console.log('%cBuscarContactos.page.jsx line:14 contacts', 'color: #007acc;', contacts);
             setContactos(contacts);
         })
         .catch(error => {

@@ -21,7 +21,17 @@ async function findContactsBuscar(nombre){
     return user
 }
 
+async function addContact(idU, idC){
+    await client.connect()
+    const db = client.db('armaelequipo')
+    const collection = db.collection('contactos')
+    const user = await collection.insertOne({id_user: ObjectId(idU), id_friend: ObjectId(idC)})
+    await client.close()
+    return user
+}
+
 export {
     findContacts,
-    findContactsBuscar
+    findContactsBuscar,
+    addContact
 }

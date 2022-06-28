@@ -43,5 +43,6 @@ async function login({mail, pass}) {
 export {
     create,
     findByID,
-    login
+    login,
+    
 }

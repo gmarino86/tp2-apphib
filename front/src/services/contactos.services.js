@@ -26,7 +26,22 @@ async function findContactsNew(nombre){
     .then(response => response.json())
 }
 
+
+async function addContact(userId, contactId){
+    console.log(userId, contactId)
+    return fetch(`${URL_API}/api/contactos/${userId}/contact/${contactId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+}
+
+
 export {  
     findContacts,
-    findContactsNew
+    findContactsNew,
+    addContact
 }
