@@ -5,6 +5,7 @@ import EventoView from "./pages/EventoView";
 import FormEventoNuevo from "./pages/FormEventoNuevo";
 import FormLogin from "./pages/FormLogin";
 import Contactos from "./pages/Contactos.page";
+import Register from "./pages/Register.page";
 import PageNotFound from "./pages/404";
 import "./App.css";
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/evento/crear" element={<FormEventoNuevo />} />
         <Route path="/login" element={<FormLogin onLogin={onLogin} />} />
         <Route path="/contactos" element={<Contactos />} />
+        <Route path="/registro" element={<Register />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
