@@ -9,14 +9,15 @@ import PageNotFound from "./pages/404";
 import "./App.css";
 
 function App() {
+  
   const navigate = useNavigate();
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token || token === "undefined") {
       navigate("/login", { replace: true });
     }
-  });
+    // eslint-disable-next-line
+  }, []);
 
   function onLogin(user, token) {
     localStorage.setItem("user", JSON.stringify(user));
