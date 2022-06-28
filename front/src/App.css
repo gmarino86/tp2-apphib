@@ -344,3 +344,14 @@ ul > li {
   background-color: #278446;
   border-color: #278446;
 }
+
+
+.btn-main {
+  background-color: #69AF3F;
+  border-color: #69AF3F;
+}
+
+.btn-main:hover {
+  background-color: #278446;
+  border-color: #278446;
+}

@@ -1,5 +1,16 @@
 const URL_API = 'http://localhost:3333'
 
+async function create(user) {
+    return fetch(`${URL_API}/api/user`, {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+}
+
 async function findByID(idJ) {
     return fetch(`${URL_API}/api/user/${idJ}`, {
         method: 'GET',
@@ -29,7 +40,8 @@ async function login({mail, pass}) {
 }
 
 
-export {  
+export {
+    create,
     findByID,
     login
 }
