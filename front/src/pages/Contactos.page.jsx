@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar.page";
 import * as ContactService from "../services/contactos.services";
 import ListContactos from "../components/Contactos/ListContactos.jsx";
@@ -9,8 +10,6 @@ function Contactos() {
     useEffect(() => {
         ContactService.findContacts()
         .then(contacts => {
-            console.log("response", contacts);
-            // Setear el state de contactos
             setContactos(contacts);
 
         })
@@ -23,10 +22,15 @@ function Contactos() {
         <>
             <Navbar />
             <div className="container">
-                <h1>Contactos</h1>
+                <div className="d-flex justify-content-between">
+                    <h1>Contactos</h1>
+                    <Link to="/buscarContactos">Buscar Contacto</Link>
+                </div>
+                <div className="row">
                     {contactos.map(contact => (
                         <ListContactos key={contact._id} contacto={contact} />
                     ))}
+                </div>
             </div>
         </>
     );

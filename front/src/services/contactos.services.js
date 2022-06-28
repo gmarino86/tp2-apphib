@@ -12,6 +12,21 @@ async function findContacts() {
     .then(response => response.json())   
 }
 
+async function findContactsNew(nombre){
+    return fetch(`${URL_API}/api/contactos`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            nombre: nombre
+        })
+    })
+    .then(response => response.json())
+}
+
 export {  
-    findContacts
+    findContacts,
+    findContactsNew
 }

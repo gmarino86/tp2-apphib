@@ -6,6 +6,13 @@ function findContacts(req, res) {
     .then(contactos => res.json(contactos))
 }
 
+function findContactsBuscar(req, res) {
+    const nombre = req.body.nombre;
+    return service.findContactsBuscar(nombre)
+    .then(contactos => res.json(contactos))
+}
+
 export {
-    findContacts
+    findContacts,
+    findContactsBuscar
 }
