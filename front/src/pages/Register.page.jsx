@@ -38,7 +38,7 @@ function Registro() {
     UserService.create(user)
       .then((response) => {
         console.log(response);
-        navigate("/eventos", { replace: true });
+        navigate("/", { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -106,7 +106,7 @@ function Registro() {
           </div>
           <div className="mb-3">
             <label htmlFor="Password" className="form-label">
-              Email
+              Password
             </label>
             <input
               type="password"
