@@ -1,11 +1,6 @@
 import * as service from '../services/user.service.js';
 import jwt from 'jsonwebtoken';
 
-// function find(req, res) {
-//     return service.find()
-//     .then(eventos => res.json(eventos))
-// }
-
 function create(req, res) {
     const user = req.body;
     return service.create(user)
@@ -22,8 +17,6 @@ function login(req, res) {
             mail: user.mail,
             name: user.name,
         }, 'secret');
-
-        // res.header('auth-token',token).status(200).json(user)
         res.status(200).json({user, token})
     })
     .catch(err => res.status(500).json(err))

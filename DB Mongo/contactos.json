@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "62b904e36a02f4f9664a05d8"
+  },
+  "id_user": {
+    "$oid": "619d8165e7ee5f3f7c416e5b"
+  },
+  "id_friend": {
+    "$oid": "619d8187e7ee5f3f7c416e5c"
+  }
+}]

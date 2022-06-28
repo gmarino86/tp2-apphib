@@ -6,18 +6,20 @@ import FormEventoNuevo from "./pages/FormEventoNuevo";
 import FormLogin from "./pages/FormLogin";
 import Contactos from "./pages/Contactos.page";
 import Register from "./pages/Register.page";
+import BuscarContactos from "./pages/BuscarContactos.page";
 import PageNotFound from "./pages/404";
 import "./App.css";
 
 function App() {
+  
   const navigate = useNavigate();
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token || token === "undefined") {
       navigate("/login", { replace: true });
     }
-  });
+    // eslint-disable-next-line
+  }, []);
 
   function onLogin(user, token) {
     localStorage.setItem("user", JSON.stringify(user));
@@ -34,6 +36,7 @@ function App() {
         <Route path="/login" element={<FormLogin onLogin={onLogin} />} />
         <Route path="/contactos" element={<Contactos />} />
         <Route path="/registro" element={<Register />} />
+        <Route path="/buscarContactos" element={<BuscarContactos />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>

@@ -5,17 +5,11 @@ import {Link} from 'react-router-dom';
 
 
 function FormLogin({ onLogin }) {
+
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
-
-  function handleMail(e) {
-    setMail(e.target.value);
-  }
-  function handlePass(e) {
-    setPass(e.target.value);
-  }
-
+  
   function handleSubmit(e) {
     e.preventDefault();
     UserService.login({ mail, pass })
@@ -39,7 +33,7 @@ function FormLogin({ onLogin }) {
               placeholder="Email"
               type="email"
               value={mail}
-              onChange={handleMail}
+              onChange={ (e) => setMail(e.target.value) }
               name="mail"
               className="form-control"
               id="mail"
@@ -51,7 +45,7 @@ function FormLogin({ onLogin }) {
               placeholder="Password"
               type="password"
               value={pass}
-              onChange={handlePass}
+              onChange={ (e) => setPass(e.target.value) }
               name="pass"
               className="form-control"
               id="pass"
