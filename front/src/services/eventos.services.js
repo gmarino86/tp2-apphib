@@ -1,25 +1,21 @@
 const URL_API = 'http://localhost:3333'
 
-async function find() {
-    if(localStorage.getItem('user')){
-        const id_jugador = JSON.parse(localStorage.getItem('user'))._id
-        return fetch(`${URL_API}/api/eventos`,{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('token'),
-                'id-jugador': id_jugador
-            }
-        })
-        .then(response => response.json())
-        .catch(error => console.log(error))
-    } else {
-        window.location.href = "/login";
-    }
+async function findAll() {
+    const user_id = JSON.parse(localStorage.getItem('user'))._id
+    return fetch(`${URL_API}/api/eventos`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token'),
+            'user_id': user_id
+        }
+    })
+    .then(response => response.json())  
+    .catch(error => console.log(error))
 }
 
-async function findByID(id) {
-    return fetch(`${URL_API}/api/eventos/${id}`, {
+async function findByID(evento_id) {
+    return fetch(`${URL_API}/api/eventos/${evento_id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -40,37 +36,8 @@ async function create(evento) {
     .then(response => response.json())
 }
 
-async function participar(id, user ){
-    return fetch(`${URL_API}/api/eventos/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            'auth-token': localStorage.getItem('token'),
-            'id-jugador': user,
-            'estado': 1
-        }
-    })  
-    .then(response => response.json())
-}
-
-
-async function noParticipar(id, user ){
-    return fetch(`${URL_API}/api/eventos/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            'auth-token': localStorage.getItem('token'),
-            'id-jugador': user,
-            'estado': 0
-        }
-    })  
-    .then(response => response.json())
-}
-
-export {  
-    find,
+export {
+    findAll,
     findByID,
-    create,
-    participar,
-    noParticipar
+    create
 }

@@ -13,20 +13,6 @@ function FormEventoNuevo(){
     const [dia, setDia] = useState("");
     const [hora, setHora] = useState("00:00");
     const [cantParticipantes, setCantParticipantes] = useState(0);
-    const [estado, setEstado] = useState(1);
-    const [id_jugador, setIdJugador] = useState([]);
-
-    // {
-    //     _id : ObjectId(), -> Default
-    //     estado: 1,  -> Deffault
-    //     titulo: "", OK
-    //     dia: "", OK
-    //     hora: "00:00", OK
-    //     lugar: "", OK
-    //     deporte: "", OK
-    //     cantParticipantes: 0,
-    //     id_jugador: [],
-    //  }
 
     function handleTitulo(e){
         setTitulo(e.target.value);
@@ -46,12 +32,6 @@ function FormEventoNuevo(){
     function handleCantParticipantes(e){
         setCantParticipantes(e.target.value);
     }
-    function handleEstado(e){
-        setEstado(e.target.value);
-    }
-    function handleIdJugador(e){
-        setIdJugador(e.target.value);
-    }
     
     function handleSubmit(e){
         e.preventDefault();
@@ -61,13 +41,13 @@ function FormEventoNuevo(){
             deporte: deporte,
             dia: dia,
             hora: hora,
-            cantParticipantes: cantParticipantes,
-            estado: estado,
-            id_jugador: id_jugador,
+            cantParticipantes: parseInt(cantParticipantes),
+            estado: 1,
         }
         EventosService.create(evento)
             .then(response => {
                 console.log(response);
+                
                 navigate('/', { replace: true });
             })
             .catch(error => {
