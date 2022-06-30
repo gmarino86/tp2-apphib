@@ -31,7 +31,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Eventos />} />
-        <Route path="/evento/:id" element={<EventoView />} />
+        <Route path="/evento/:evento_id" element={<EventoView />} />
         <Route path="/evento/crear" element={<FormEventoNuevo />} />
         <Route path="/login" element={<FormLogin onLogin={onLogin} />} />
         <Route path="/contactos" element={<Contactos />} />

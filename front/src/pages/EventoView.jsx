@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import * as EventosServices from "../services/eventos.services";
-import ParticipanteLista from "../components/ParticipantesLista/ParticipantesLista.component";
+import * as ParticipantesServices from "../services/participantes.services";
+import Participantes from "../components/Participantes/Participantes";
 
-
-// import { format } from 'date-fns'
 
 function EventoView() {
-  let navigate = useNavigate();
-
-  const { id } = useParams();
+  const { evento_id } = useParams();
 
   const [evento, setEvento] = useState({
     _id: "",
     titulo: "",
-    id_jugador: [],
     lugar: "",
     deporte: "",
     estado: 0,
@@ -23,34 +19,39 @@ function EventoView() {
     hora: "00:00",
   });
 
-  const [participacion, setParticipacion] = useState();
+  const [participacion, setParticipacion] = useState({
+    _id: "",
+    evento_id: "",
+    user_id: "",
+    estado: 0,
+    updated_at: "",
+  })
   
   useEffect(() => {
-    EventosServices.findByID(id)
+    EventosServices.findByID(evento_id)
       .then((evento) => {
-        evento.id_jugador.forEach(j => {
-          if ( j.idJ === JSON.parse(localStorage.getItem('user'))._id ) {
-            setParticipacion(j.estado)
-          }
-        });
-
+        console.log('%cEventoView.jsx line:41 evento y evento_id', 'color: #007acc;', evento, evento_id);
         setEvento(evento)
       })
+      .then(() => {
+        ParticipantesServices.findByEventId(evento_id, evento.cantParticipantes)
+        .then((participacion) => {
+          console.log('%cEventoView.jsx line:34 participacion', 'color: #007acc;', participacion);
+          setParticipacion(participacion)
+        })
+        .catch((error) => console.log(error));
+      })
       .catch((err) => console.log(err));
-  }, [id, participacion]);
+  }, [evento_id, evento.cantParticipantes]);
 
   function participar(){
-    EventosServices.participar(evento._id, JSON.parse(localStorage.getItem('user'))._id)
-    .then(res => {
-      window.location.reload();
+    ParticipantesServices.participacion(evento_id)
+    .then((evento) => {
     })
   }
 
   function noParticipar(){
-    EventosServices.noParticipar(evento._id, JSON.parse(localStorage.getItem('user'))._id)
-    .then(res => {
-      window.location.reload();
-    })
+    
   }
 
 
@@ -88,21 +89,8 @@ function EventoView() {
               </div>
             </div>
 
-            <div className="card mb-3">
-              <div className="card-header">
-                <h2>Participantes</h2>
-              </div>
-              <ol className="list-group list-group-numbered">
-                {evento.id_jugador.length !== 0 ? (
-                  evento.id_jugador.map((jugador) => (
-                    <ParticipanteLista key={jugador.idJ} jugador={jugador} />
-                  ))
-                ) : (
-                  <li className="p-2 text-center">No hay participantes</li>
-                )}
-              </ol>
-            </div>
-          </div>
+            <Participantes evento={evento._id} cantidad={evento.cantParticipantes} />
+          </div> 
 
           <div className="container text-center">
             { participacion === 0 ?  (

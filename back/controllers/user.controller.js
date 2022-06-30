@@ -26,7 +26,6 @@ function findByID(req, res) {
     const idU = req.params.idU;
     return service.findByID(idU)
     .then(jugador => {
-        console.log('%cuser.controller.js line:29 jugador', 'color: #007acc;', jugador);
         res.json(jugador)
     })
 }
