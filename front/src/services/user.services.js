@@ -11,8 +11,8 @@ async function create(user) {
     .then(response => response.json())
 }
 
-async function findByID(idJ) {
-    return fetch(`${URL_API}/api/user/${idJ}`, {
+async function findByID(idU) {
+    return fetch(`${URL_API}/api/user/${idU}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

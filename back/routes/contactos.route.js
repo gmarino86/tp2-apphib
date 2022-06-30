@@ -3,8 +3,12 @@ import * as ContactosController from '../controllers/contactos.controller.js';
 import { autorization } from '../middleware/auth.middleware.js';
 const router = express.Router();
 
-router.post("/", [autorization], ContactosController.findContactsBuscar);
+// Trae todos los contactos
 router.get("/:idU", [autorization], ContactosController.findContacts);
-router.post("/:idU/contact/:idC", [autorization], ContactosController.addContact);
+
+//Busca por nombre
+router.get("/nombre/:name", [autorization], ContactosController.findContactsBuscar);
+// Agrega un contacto
+router.post("/:idU/:idC", [autorization], ContactosController.addContact);
 
 export default router;

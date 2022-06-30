@@ -1,37 +1,18 @@
-import { useEffect, useState } from "react";
-import * as UserService from "../../services/user.services.js";
-import * as ContactService from "../../services/contactos.services.js";
+import { useEffect } from "react";
+import * as ServiceContactos from "../../services/contactos.services";
 
-function ListContactos({ contacto }) {
-  const [c, setC] = useState({});
-
+function ListContactosBuscar({ contacto }) {
   useEffect(() => {
-    UserService.findByID(contacto._id)
-      .then((respuesta) => {
-        console.log("response", respuesta);
-        setC(respuesta);
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
-  }, [contacto]);
-
-  function agregar(){
-    const user = JSON.parse(localStorage.getItem("user"));
-    const userId = user._id;
-    const contactId = c._id
-
-    /** 
-     * TODO: PONER CONTROL DE QUE NO SE AGREGUE A SI MISMO NI A UN USER QUE YA ESTA EN LA LISTA DE CONTACTOS
-     */
-    ContactService.addContact(userId, contactId)
-      .then((respuesta) => {
-        console.log("response", respuesta);
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
+      console.log('%cListContactosBuscar.jsx line:7 contacto', 'color: #007acc;', contacto);
+  }, [contacto]); 
+  
+  function agregarContacto(idC) {
+    let idU = JSON.parse(localStorage.getItem('user'));
+    idU = idU._id;
+    ServiceContactos.addContact(idU, idC)
+    .then(contacto => {
+      console.log('%cListContactosBuscar.jsx line:15 contacto', 'color: #007acc;', contacto);
+    })
   }
 
   return (
@@ -41,12 +22,14 @@ function ListContactos({ contacto }) {
           <div className="card-body d-flex justify-content-between">
             <div>
               <h2 className="card-title">
-                {c.name} {c.lastname}
+                {contacto.name} {contacto.lastname}
               </h2>
-              <p className="card-text">{c.mail}</p>
+              <p className="card-text">{contacto.mail}</p>
             </div>
             <div>
-                <i className="bi bi-person-plus-fill" onClick={agregar}></i>
+              <button className="btn btn-outline-success" onClick={() => agregarContacto(contacto._id)}>
+                <i className="bi bi-person-plus-fill"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -55,4 +38,4 @@ function ListContactos({ contacto }) {
   );
 }
 
-export default ListContactos;
+export default ListContactosBuscar;
