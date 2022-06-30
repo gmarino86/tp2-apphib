@@ -359,3 +359,7 @@ ul > li {
 .bi-person-plus-fill {
   font-size: 40px;
 }
+
+.lh-3 {
+  line-height: 3rem;
+}

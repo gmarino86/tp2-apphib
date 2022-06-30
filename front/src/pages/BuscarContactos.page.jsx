@@ -11,6 +11,7 @@ function BuscarContactos(){
         e.preventDefault();
         ContactService.findContactsNew(nombre)
         .then(contacts => {
+            console.log('%cBuscarContactos.page.jsx line:14 contacts', 'color: #007acc;', contacts);
             setContactos(contacts);
         })
         .catch(error => {
@@ -29,10 +30,13 @@ function BuscarContactos(){
                     <input className="form-control me-2" name="name" value={nombre} onChange={(e) => setNombre(e.target.value)} type="search" placeholder="Ingresá un nombre" aria-label="Search" />
                     <button className="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
+
                 <div className="row mt-3">
-                    {contactos.map(contact => (
-                        <ListContactosBuscar key={contact._id} contacto={contact}  />
-                    ))}
+                    {
+                        contactos.map(contacto => (
+                            <ListContactosBuscar key={contacto._id} contacto={contacto} />
+                        ))
+                    }
                 </div>
 
             </div>

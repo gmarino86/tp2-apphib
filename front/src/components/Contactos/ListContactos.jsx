@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import * as UserService from "../../services/user.services.js";
 
-function ListContactos({ contacto, buscador = null }) {
+function ListContactos({ contacto }) {
+
   const [c, setC] = useState({});
 
   useEffect(() => {
+    console.log('%cListContactos.jsx line:8 contacto.id_friend', 'color: #007acc;', contacto.id_friend);
     UserService.findByID(contacto.id_friend)
-      .then((respuesta) => {
-        console.log("response", respuesta);
-        // Setear el state de contactos
-        setC(respuesta);
+      .then((contact) => {
+        console.log("response", contact);
+        setC(contact);
       })
       .catch((error) => {
         console.log("error", error);
@@ -27,18 +28,12 @@ function ListContactos({ contacto, buscador = null }) {
               </h2>
               <p className="card-text">{c.mail}</p>
             </div>
-            { buscador ? (
-                <div>
-                    <i className="bi bi-person-plus-fill"></i>
-                </div>
-            ) : (
-                null
-            )}
           </div>
         </div>
       </div>
     </>
   );
+
 }
 
 export default ListContactos;
