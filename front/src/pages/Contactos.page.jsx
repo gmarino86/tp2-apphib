@@ -12,7 +12,8 @@ function Contactos() {
         .then(contacts => {
             let friends = []
             contacts.forEach(contact => {
-                friends.push(contact.friend_id);
+                console.log('%cContactos.page.jsx line:15 contsct', 'color: #007acc;', {...contact, user_id: undefined, _id: undefined});
+                friends.push({...contact, user_id: undefined, _id: undefined});
             });
 
             setContactos(friends)

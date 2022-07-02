@@ -49,6 +49,7 @@ async function login({mail, pass}){
 }
 
 async function getAllUsers(partic){
+    console.log('%cuser.service.js line:52 partic', 'color: #007acc;', partic);
     if(partic.length > 0){
         let ids = ""
         partic.forEach(element => {
@@ -59,9 +60,7 @@ async function getAllUsers(partic){
         await client.connect()
         const db = client.db('armaelequipo')
         const collection = db.collection('user')
-        console.log(`collection.find({_id: {$in: [`+ids+`]}}).toArray()` );
         const users = await collection.find({_id: {$in: [ids]}}).toArray()
-        console.log(collection.find({_id: {$in: [ids]}}).toArray())
         console.log('%cuser.service.js line:57 users', 'color: #007acc;', users);
         await client.close()
         return users
@@ -69,21 +68,21 @@ async function getAllUsers(partic){
 }
 
 async function findAllContacts(contactos){
+    console.log('%cuser.service.js line:72 contactos', 'color: #007acc;', contactos);
     if(contactos.length > 0){
         let ids = ""
-        for (let i = 0; i < contactos.length; i++) {
-            ids += `ObjectId("${contactos[i]}"),`
-        }
+        contactos.forEach(e => {
+            ids += `ObjectId("${e.friend_id}"), `
+        });
         console.log('%cuser.service.js line:77 ids', 'color: #007acc;', ids);
         await client.connect()
         const db = client.db('armaelequipo')
         const collection = db.collection('user')
-        const contacts = await collection.find({_id: {$in: [{ids}] }}).toArray()
-        console.log('%cuser.service.js line:82 contacts', 'color: #007acc;', contacts);
+        const users = await collection.find({"_id": {$in: [`${ids}`]}}).toArray()
+        console.log('%cuser.service.js line:82 contacts', 'color: #007acc;', users);
         await client.close()
-        return contacts
+        return users
     };
-        
 }
 
 export {
