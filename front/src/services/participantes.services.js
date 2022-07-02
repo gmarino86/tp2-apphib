@@ -19,14 +19,8 @@ async function find() {
 }
 
 async function findByEventId(evento_id) {
-    console.log(
-        "%cparticipantes.services.js line:22 evento",
-        "color: #007acc;",
-        evento_id
-    );
-    
     return fetch(`${URL_API}/api/participantes/evento/${evento_id}`, {
-    method: "POST",
+    method: "GET",
     headers: {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem("token"),

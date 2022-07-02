@@ -25,32 +25,16 @@ function login(req, res) {
 }
 
 function findByID(req, res) {
-    const idU = req.params.idU;
-    console.log('%cuser.controller.js line:29 idU', 'color: #007acc;', idU);
-    return service.findByID(idU)
+    const user_id = req.params.user_id;
+    return service.findByID(user_id)
     .then(jugador => {
         res.json(jugador)
     })
-}
-
-function getAllUsers(req, res) {
-    const evento_id = req.body;
-    console.log('%cuser.controller.js line:38 evento_id', 'color: #007acc;', evento_id);
-    if (evento_id !== undefined || evento_id !== null || evento_id !== "") {
-        console.log('%cuser.controller.js line:40 evento_id', 'color: #007acc;', evento_id);
-        return service.getAllUsers(evento_id)
-        .then(participacion => {
-            res.json(participacion)
-        })
-    } else {
-        res.json([])
-    }
 }
 
 export {
     // find,
     findByID,
     login,
-    create,
-    getAllUsers
+    create
 }

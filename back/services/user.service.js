@@ -4,12 +4,12 @@ import bcrypt from 'bcrypt'
 
 const client = new MongoClient('mongodb://127.0.0.1:27017')
 
-async function findByID(idU){
-    console.log('%cuser.service.js line:8 idU', 'color: #007acc;', idU);
+async function findByID(user_id){
     await client.connect()
     const db = client.db('armaelequipo')
     const collection = db.collection('user')
-    const user = await collection.findOne({_id: ObjectId(idU)})
+    const user = await collection.findOne({_id: ObjectId(user_id)})
+    console.log('%cuser.service.js line:13 user', 'color: #007acc;', user);
     await client.close()
     return {...user, pass: undefined}
 }

@@ -13,8 +13,8 @@ async function create(user) {
     })
 }
 
-async function findByID(idU) {
-    return fetch(`${URL_API}/api/user/${idU}`, {
+async function findByID(user_id) {
+    return fetch(`${URL_API}/api/user/${user_id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

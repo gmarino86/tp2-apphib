@@ -6,23 +6,19 @@ import * as EventosServices from "../services/eventos.services";
 function EventoView() {
   const { evento_id } = useParams();
 
-  const [evento, setEvento] = useState({
-    _id: "",
-    titulo: "",
-    lugar: "",
-    deporte: "",
-    estado: 0,
-    cantParticipantes: 0,
-    dia: "",
-    hora: "00:00",
-  });
-
+  
   useEffect(() => {
+    if(evento_id){
       EventosServices.findByID(evento_id)
       .then((evento) => {
         setEvento(evento)
       })
-  }, [evento_id]);
+    }
+    // eslint-disable-next-line
+  }, [])
+  
+  const [evento, setEvento] = useState({});
+  console.log('%cEventoView.jsx line:30 object', 'color: #007acc;', evento);
 
   return (
     <div>
@@ -57,20 +53,8 @@ function EventoView() {
                 </div>
               </div>
             </div>
-            <Participantes evento={evento}/>
+            <Participantes evento={evento} />
           </div> 
-
-          <div className="container text-center">
-            {/* { participacionEvento === 0 ?  (
-              <button className="btn btn-success p-3 w-50" type="button" >
-                Participar
-              </button>
-            ) : (
-              <button className="btn btn-danger p-3 w-50" type="button" >
-                No Participar
-              </button>
-            )}  */}
-          </div>
         </div>
       </div>
     </div>
