@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post("/", UserController.create);
 router.post("/login", UserController.login);
+router.post("/contactos", [autorization], UserController.findAllContacts);
 router.get("/:user_id", [autorization], UserController.findByID);
 
 export default router;

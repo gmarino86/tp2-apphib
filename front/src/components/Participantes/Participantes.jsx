@@ -12,7 +12,7 @@ function Participantes({ evento }) {
     }
     // eslint-disable-next-line
   }, [evento])
-  console.log('%cParticipantes.jsx line:15 participantes', 'color: #007acc;', participantes);
+  
   return (
     <>
     <div className="card mb-3">

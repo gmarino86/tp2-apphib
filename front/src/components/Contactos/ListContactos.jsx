@@ -1,36 +1,27 @@
-import { useEffect, useState } from "react";
-import * as UserService from "../../services/user.services.js";
+import { useEffect } from "react";
+// import ContactosCard from "../../components/Contactos/ContactosCard.jsx";
+import * as UserServices from "../../services/user.services";
 
-function ListContactos({ contacto }) {
-
-  const [c, setC] = useState({});
-
+function ListContactos({ contact }) {
+  console.log('%cListContactos.jsx line:6 contact', 'color: #007acc;', contact);
   useEffect(() => {
-    console.log('%cListContactos.jsx line:8 contacto.id_friend', 'color: #007acc;', contacto.id_friend);
-    UserService.findByID(contacto.id_friend)
-      .then((contact) => {
-        console.log("response", contact);
-        setC(contact);
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
-  }, [contacto]);
+    if(contact.length > 0){
+      console.log('%cListContactos.jsx line:7 contact', 'color: #007acc;', contact);
+      UserServices.getAllUsers(contact)
+        .then(users => {
+          console.log('%cListContactos.jsx line:9 users', 'color: #007acc;', users);
+        })
+        .catch(error => {
+          console.log("error", error);
+        });
+    }
+  }, [contact]);
 
+  console.log('%cListContactos.jsx line:24 contact', 'color: #007acc;', contact);
+  
   return (
-    <>
-      <div className="col-md-6 mb-2">
-        <div className="card">
-          <div className="card-body d-flex justify-content-between">
-            <div>
-              <h2 className="card-title">
-                {c.name} {c.lastname}
-              </h2>
-              <p className="card-text">{c.mail}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <>  
+      {/* <ContactosCard key={contact._id} contacto={contact.friend_id} ></ContactosCard>        */}
     </>
   );
 

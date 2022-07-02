@@ -18,7 +18,6 @@ function EventoView() {
   }, [])
   
   const [evento, setEvento] = useState({});
-  console.log('%cEventoView.jsx line:30 object', 'color: #007acc;', evento);
 
   return (
     <div>
