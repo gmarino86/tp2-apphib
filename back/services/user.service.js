@@ -9,7 +9,6 @@ async function findByID(user_id){
     const db = client.db('armaelequipo')
     const collection = db.collection('user')
     const user = await collection.findOne({_id: ObjectId(user_id)})
-    console.log('%cuser.service.js line:13 user', 'color: #007acc;', user);
     await client.close()
     return {...user, pass: undefined}
 }
@@ -69,8 +68,26 @@ async function getAllUsers(partic){
     }
 }
 
+async function findAllContacts(contactos){
+    if(contactos.length > 0){
+        let ids = ""
+        for (let i = 0; i < contactos.length; i++) {
+            ids += `ObjectId("${contactos[i]}"),`
+        }
+        console.log('%cuser.service.js line:77 ids', 'color: #007acc;', ids);
+        await client.connect()
+        const db = client.db('armaelequipo')
+        const collection = db.collection('user')
+        const contacts = await collection.find({_id: {$in: [{ids}] }}).toArray()
+        console.log('%cuser.service.js line:82 contacts', 'color: #007acc;', contacts);
+        await client.close()
+        return contacts
+    };
+        
+}
+
 export {
-    // find,
+    findAllContacts,
     findByID,
     create,
     login,

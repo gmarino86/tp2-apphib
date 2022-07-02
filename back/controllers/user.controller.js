@@ -31,9 +31,16 @@ function findByID(req, res) {
         res.json(jugador)
     })
 }
+function findAllContacts(req, res) {
+    const contactos = req.body;
+    return service.findAllContacts(contactos)
+    .then(jugadores => {
+        res.json(jugadores)
+    })
+}
 
 export {
-    // find,
+    findAllContacts,
     findByID,
     login,
     create

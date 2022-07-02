@@ -1,9 +1,9 @@
 const URL_API = 'http://localhost:3333'
 
 async function findContacts() {
-    let idU = JSON.parse(localStorage.getItem('user'));
-    idU = idU._id;
-    return fetch(`${URL_API}/api/contactos/${idU}`, {
+    let user_id = JSON.parse(localStorage.getItem('user'));
+    user_id = user_id._id;
+    return fetch(`${URL_API}/api/contactos/${user_id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

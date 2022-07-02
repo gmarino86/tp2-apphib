@@ -41,17 +41,21 @@ async function login({mail, pass}) {
     })
 }
 
-async function getAllUsers(evento){
-    console.log('%cuser.services.js line:45 evento', 'color: #007acc;', evento);
-    return fetch(`${URL_API}/api/user/evento`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'auth-token': localStorage.getItem('token'),
-        },
-        body: JSON.stringify(evento)
-    })
-    .then(response => response.json())
+async function getAllUsers(contactos){
+    console.log('%cuser.services.js line:45 contactos', 'color: #007acc;', contactos);
+    if(contactos.length > 0){
+        return fetch(`${URL_API}/api/user/contactos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('token'),
+            },
+            body: JSON.stringify(contactos)
+        })
+        .then(response => response.json())
+    } else{
+        return []
+    }
 }
 
 export {

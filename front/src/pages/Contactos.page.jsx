@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
-import Navbar from "./Navbar.page";
-import * as ContactService from "../services/contactos.services";
-import ListContactos from "../components/Contactos/ListContactos.jsx";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar.page";
+import ListContactos from "../components/Contactos/ListContactos.jsx";
+import * as ContactService from "../services/contactos.services";
 
 function Contactos() {
     const [contactos, setContactos] = useState([]);
+
     useEffect(() => {
         ContactService.findContacts()
         .then(contacts => {
-            console.log('%cContactos.page.jsx line:12 object', 'color: #007acc;', contacts);
-            setContactos(contacts)
+            let friends = []
+            contacts.forEach(contact => {
+                friends.push(contact.friend_id);
+            });
+
+            setContactos(friends)
         })
         .catch(error => {
             console.log("error", error);
         });
+        // eslint-disable-next-line
     }, []);
 
     return (
@@ -26,9 +32,7 @@ function Contactos() {
                     <Link className="lh-3" to="/buscarContactos">Buscar Contactos</Link>
                 </div>
                 <div className="row">
-                    {contactos.map(contact => (
-                        <ListContactos key={contact._id} contacto={contact} />
-                    ))}
+                    <ListContactos contact={contactos} />
                 </div>
             </div>
         </>
