@@ -8,7 +8,6 @@ import EventosList from "./EventosList";
 function Evento() {
   const [eventosDatos, setEventosDatos] = useState([]);
 
-
   useEffect(() => {
     ParticipantesServices.find()
     .then((data) => {
@@ -17,14 +16,13 @@ function Evento() {
         setEventosDatos(data);
       })
     })
-    }, []);
+    }, [])
 
   return (
     <div>
       <NavbarPage></NavbarPage>
       <div className="container">
         <h1>Eventos</h1>
-
         <div className="row mt-3">
           {eventosDatos.map((evento) => (
             <EventosList key={evento._id} event={evento} />

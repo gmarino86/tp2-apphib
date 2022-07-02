@@ -8,19 +8,8 @@ function find(req, res) {
 
 function findByEventId(req, res) {
     const evento_id = req.params.evento_id;
-    console.log('%cparticipantes.controller.js line:11 evento_id', 'color: #007acc;', evento_id);
     return service.findByEventId(evento_id)
     .then(eventos => res.json(eventos))
-}
-
-
-function findParticipantes(req, res) {
-    const evento_id = req.params.evento_id;
-    const cantidad = req.params.cantidad;
-    return service.findParticipantes(evento_id,cantidad)
-    .then(contactos => {
-        res.json(contactos)
-    })
 }
 
 function participacion(req, res) {
@@ -34,7 +23,6 @@ function participacion(req, res) {
 
 export {
     find,
-    findParticipantes,
-    participacion,
-    findByEventId
+    findByEventId,
+    participacion
 }

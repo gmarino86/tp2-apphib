@@ -38,7 +38,6 @@ async function findByEventId(evento_id){
     const db = client.db('armaelequipo')
     const collection = db.collection('participantes')
     const participantes = await collection.find({ evento_id: ObjectId(evento_id) }).toArray()
-    console.log('%cparticipantes.service.js line:41 participantes', 'color: #007acc;', participantes);
     await client.close()
     return participantes
 }
