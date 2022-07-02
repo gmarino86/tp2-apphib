@@ -7,38 +7,28 @@
   "deporte": "Futbol 11",
   "dia": "2022-06-23",
   "hora": "21:00",
-  "cantParticipantes": "22",
-  "estado": 1,
-  "id_jugador": [
-    {
-      "idJ": {
-        "$oid": "619d8165e7ee5f3f7c416e5b"
-      },
-      "estado": 1
-    }
-  ]
+  "cantParticipantes": 22,
+  "estado": 1
 },{
   "_id": {
-    "$oid": "62af73c8563c822cb4bf150a"
-  },
-  "titulo": "Paddle",
-  "lugar": "Calle Falsa 123",
-  "deporte": "Paddle",
-  "dia": "2022-06-22",
-  "hora": "21:00",
-  "cantParticipantes": "4",
-  "estado": 1,
-  "id_jugador": []
-},{
-  "_id": {
-    "$oid": "62b28d7f3a7002aef79d916b"
+    "$oid": "62bd3d300425031cb413f729"
   },
   "titulo": "Tenis",
   "lugar": "Calle Falsa 123",
   "deporte": "Tenis",
-  "dia": "2022-06-22",
+  "dia": "2022-07-05",
   "hora": "20:00",
-  "cantParticipantes": "4",
-  "estado": 1,
-  "id_jugador": []
+  "cantParticipantes": 2,
+  "estado": 1
+},{
+  "_id": {
+    "$oid": "62bd3da30425031cb413f72a"
+  },
+  "titulo": "Tenis",
+  "lugar": "Calle Falsa 123",
+  "deporte": "Tenis",
+  "dia": "2022-07-07",
+  "hora": "23:00",
+  "cantParticipantes": 2,
+  "estado": 1
 }]

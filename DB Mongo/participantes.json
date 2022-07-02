@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "62bd260e726ecddba2e3de3e"
+  },
+  "evento_id": {
+    "$oid": "62af6f4b563c822cb4bf1509"
+  },
+  "estado": 1,
+  "user_id": {
+    "$oid": "619d8165e7ee5f3f7c416e5b"
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1656562966794"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62bd27c4726ecddba2e3de3f"
+  },
+  "evento_id": {
+    "$oid": "62af6f4b563c822cb4bf1509"
+  },
+  "estado": 1,
+  "user_id": {
+    "$oid": "619d8187e7ee5f3f7c416e5c"
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1656566566794"
+    }
+  }
+}]

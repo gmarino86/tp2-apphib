@@ -1,26 +1,23 @@
-import EventosList from "./EventosList";
 import { useState, useEffect } from "react";
-import * as ParticipantesServices from "../../services/participantes.services";
 import { Link } from "react-router-dom";
+import * as ParticipantesServices from "../../services/participantes.services";
+import * as EventosServices from "../../services/eventos.services";
 import NavbarPage from "../../pages/Navbar.page";
+import EventosList from "./EventosList";
 
 function Evento() {
-  const [eventos, setEventos] = useState([
-    {
-      estado: 0,
-      evento_id: "",
-      updated_at: "",
-      user_id: "",
-      _id: "",
-    },
-  ]);
+  const [eventosDatos, setEventosDatos] = useState([]);
+
 
   useEffect(() => {
     ParticipantesServices.find()
     .then((data) => {
-      setEventos(data);
-    });
-  }, []);
+      EventosServices.findArray(data)
+      .then((data) => {
+        setEventosDatos(data);
+      })
+    })
+    }, []);
 
   return (
     <div>
@@ -29,8 +26,8 @@ function Evento() {
         <h1>Eventos</h1>
 
         <div className="row mt-3">
-          {eventos.map((evento) => (
-            <EventosList key={evento._id} event={evento.evento_id} />
+          {eventosDatos.map((evento) => (
+            <EventosList key={evento._id} event={evento} />
           ))}
         </div>
 

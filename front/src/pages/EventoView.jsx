@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import * as EventosServices from "../services/eventos.services";
-import * as ParticipantesServices from "../services/participantes.services";
 import Participantes from "../components/Participantes/Participantes";
-
+import * as EventosServices from "../services/eventos.services";
 
 function EventoView() {
   const { evento_id } = useParams();
@@ -19,41 +17,12 @@ function EventoView() {
     hora: "00:00",
   });
 
-  const [participacion, setParticipacion] = useState({
-    _id: "",
-    evento_id: "",
-    user_id: "",
-    estado: 0,
-    updated_at: "",
-  })
-  
   useEffect(() => {
-    EventosServices.findByID(evento_id)
+      EventosServices.findByID(evento_id)
       .then((evento) => {
-        console.log('%cEventoView.jsx line:41 evento y evento_id', 'color: #007acc;', evento, evento_id);
         setEvento(evento)
       })
-      .then(() => {
-        ParticipantesServices.findByEventId(evento_id, evento.cantParticipantes)
-        .then((participacion) => {
-          console.log('%cEventoView.jsx line:34 participacion', 'color: #007acc;', participacion);
-          setParticipacion(participacion)
-        })
-        .catch((error) => console.log(error));
-      })
-      .catch((err) => console.log(err));
-  }, [evento_id, evento.cantParticipantes]);
-
-  function participar(){
-    ParticipantesServices.participacion(evento_id)
-    .then((evento) => {
-    })
-  }
-
-  function noParticipar(){
-    
-  }
-
+  }, [evento_id]);
 
   return (
     <div>
@@ -88,20 +57,19 @@ function EventoView() {
                 </div>
               </div>
             </div>
-
-            <Participantes evento={evento._id} cantidad={evento.cantParticipantes} />
+            <Participantes evento={evento}/>
           </div> 
 
           <div className="container text-center">
-            { participacion === 0 ?  (
-              <button className="btn btn-success p-3 w-50" type="button" onClick={participar}>
+            {/* { participacionEvento === 0 ?  (
+              <button className="btn btn-success p-3 w-50" type="button" >
                 Participar
               </button>
             ) : (
-              <button className="btn btn-danger p-3 w-50" type="button" onClick={noParticipar}>
+              <button className="btn btn-danger p-3 w-50" type="button" >
                 No Participar
               </button>
-            )} 
+            )}  */}
           </div>
         </div>
       </div>

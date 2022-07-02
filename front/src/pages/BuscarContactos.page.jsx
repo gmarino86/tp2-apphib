@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as ContactService from "../services/contactos.services";
 import Navbar from "../pages/Navbar.page";
 import ListContactosBuscar from "../components/Contactos/ListContactosBuscar.jsx";
@@ -7,19 +7,20 @@ function BuscarContactos(){
     const [nombre, setNombre] = useState("");
     const [contactos, setContactos] = useState([]);
 
+    useEffect(() => {    
+    }, []);
+
     function handleSubmit(e){
         e.preventDefault();
         ContactService.findContactsNew(nombre)
         .then(contacts => {
-            console.log('%cBuscarContactos.page.jsx line:14 contacts', 'color: #007acc;', contacts);
             setContactos(contacts);
         })
         .catch(error => {
             console.log("error", error);
         });
     }
-
-
+    
     return(
         <>
             <Navbar />

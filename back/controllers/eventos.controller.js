@@ -17,9 +17,16 @@ function findByID(req, res) {
     .then(evento => res.json(evento))
 }
 
+function findArray(req, res) {
+    const eventos = req.body
+    return service.findArray(eventos)
+    .then(eventos => res.json(eventos))
+}
+
 export {
     findAll,
     findByID,
-    create
+    create,
+    findArray
 }
 

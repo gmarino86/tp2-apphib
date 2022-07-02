@@ -2,10 +2,17 @@ import * as service from '../services/participantes.service.js';
 
 function find(req, res) {
     const user_id = req.headers.user_id;
-    console.log('%cparticipantes.controller.js line:5 user_id', 'color: #007acc;', user_id);
     return service.find(user_id)
     .then(eventos => res.json(eventos))
 }
+
+function findByEventId(req, res) {
+    const evento_id = req.params.evento_id;
+    console.log('%cparticipantes.controller.js line:11 evento_id', 'color: #007acc;', evento_id);
+    return service.findByEventId(evento_id)
+    .then(eventos => res.json(eventos))
+}
+
 
 function findParticipantes(req, res) {
     const evento_id = req.params.evento_id;
@@ -28,5 +35,6 @@ function participacion(req, res) {
 export {
     find,
     findParticipantes,
-    participacion
+    participacion,
+    findByEventId
 }

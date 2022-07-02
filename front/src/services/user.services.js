@@ -3,12 +3,14 @@ const URL_API = 'http://localhost:3333'
 async function create(user) {
     return fetch(`${URL_API}/api/user`, {
         method: 'POST',
-        body: JSON.stringify(user),
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify(user)
     })
-    .then(response => response.json())
+    .then(response => {
+        return response.json()
+    })
 }
 
 async function findByID(idU) {
@@ -39,10 +41,22 @@ async function login({mail, pass}) {
     })
 }
 
+async function getAllUsers(evento){
+    console.log('%cuser.services.js line:45 evento', 'color: #007acc;', evento);
+    return fetch(`${URL_API}/api/user/evento`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token'),
+        },
+        body: JSON.stringify(evento)
+    })
+    .then(response => response.json())
+}
 
 export {
     create,
     findByID,
     login,
-    
+    getAllUsers
 }
