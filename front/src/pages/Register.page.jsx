@@ -1,132 +1,100 @@
-import * as UserService from "../services/user.services";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import * as UserService from "../services/user.services";
 import NavbarPage from "./Navbar.page";
 
+// Crear una pagina para registro que tenga nombre apellido mail y pass
 function Registro() {
-  let navigate = useNavigate();
-
   const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function handleName(e) {
-    setName(e.target.value);
-  }
-
-  function handleLastname(e) {
-    setLastname(e.target.value);
-  }
-
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
+  const [lastName, setLastName] = useState("");
+  const [mail, setMail] = useState("");
+  const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    const user = {
-      name: name,
-      lastname: lastname,
-      email: email,
-      password: password,
-    };
-    UserService.create(user)
-      .then((response) => {
-        console.log(response);
-        navigate("/", { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    UserService.create({ name, lastName, mail, pass })
+    .then((user) => {
+      if(user){
+        setError("");
+        window.location.href = "/login";
+      } else {
+        setError("Usuario ya existe");
+      }
+    })
+    .catch((err) => {
+      console.log("Error: ", err);
+      setError(err.message);
+    });
   }
 
   return (
     <>
-      <NavbarPage />
-      <div className="container">
-        <h1>Registrate gratis!</h1>
+      <NavbarPage></NavbarPage>
+      <div className="login-form">
         <form onSubmit={handleSubmit}>
-          <div className="row g-2">
-            <div className="col-6">
-              <label htmlFor="name" className="form-label">
-                Nombre
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={handleName}
-                name="name"
-                className="form-control"
-                id="name"
-                aria-describedby="nameHelp"
-              />
-              <div id="nameHelp" className="form-text">
-                Ingresá tu nombre
-              </div>
-            </div>
-            <div className="col-6">
-              <label htmlFor="lastname" className="form-label">
-                Apellido
-              </label>
-              <input
-                type="text"
-                value={lastname}
-                onChange={handleLastname}
-                name="lastname"
-                className="form-control"
-                id="lastname"
-                aria-describedby="lastnameHelp"
-              />
-              <div id="lastnameHelp" className="form-text">
-                Ingresá tu Apellido
-              </div>
-            </div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="Email" className="form-label">
-              Email
-            </label>
+          <div className="avatar text-center"></div>
+          <h4 className="modal-title">Registro</h4>
+          <div className="form-group">
             <input
-              type="mail"
-              value={email}
-              onChange={handleEmail}
+              placeholder="Nombre"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              name="name"
+              className="form-control"
+              id="name"
+              aria-describedby="nameHelp"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              placeholder="Apellido"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              name="lastName"
+              className="form-control"
+              id="lastName"
+              aria-describedby="lastNameHelp"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              placeholder="Email"
+              type="email"
+              value={mail}
+              onChange={(e) => setMail(e.target.value)}
               name="mail"
               className="form-control"
               id="mail"
-              aria-describedby="email"
+              aria-describedby="mailHelp"
             />
-            <div id="email" className="form-text">
-              Ingresá tu email
-            </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="Password" className="form-label">
-              Password
-            </label>
+          <div className="form-group">
             <input
+              placeholder="Password"
               type="password"
-              value={password}
-              onChange={handlePassword}
-              name="password"
+              value={pass}
+              onChange={(e) => setPass(e.target.value)}
+              name="pass"
               className="form-control"
-              id="password"
-              aria-describedby="password"
+              id="pass"
+              aria-describedby="passHelp"
             />
-            <div id="password" className="form-text">
-              Ingresá tu password
-            </div>
           </div>
-          <div className="d-grid gap-2">
-            <button className="btn btn-main btn-primary" type="submit">
-              Crear
-            </button>
+          <div className="form-group small clearfix">
+            <a href="/" className="forgot-link">
+              Olvidaste tu contraseña?
+            </a>
           </div>
+          <input
+            type="submit"
+            className="btn btn-primary btn-block btn-lg"
+            value="Registro"
+          />
         </form>
+        {error && <p className="text-danger">{error}</p>}
+        
       </div>
     </>
   );

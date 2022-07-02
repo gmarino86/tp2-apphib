@@ -36,8 +36,21 @@ async function create(evento) {
     .then(response => response.json())
 }
 
+async function findArray(eventos) {
+    return fetch(`${URL_API}/api/eventos/array`, {
+        method: 'POST',
+        body: JSON.stringify(eventos),
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+}
+
 export {
     findAll,
     findByID,
-    create
+    create,
+    findArray
 }
