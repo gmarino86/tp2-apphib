@@ -24,9 +24,13 @@ function Evento() {
       <div className="container">
         <h1>Eventos</h1>
         <div className="row mt-3">
-          {eventosDatos.map((evento) => (
-            <EventosList key={evento._id} event={evento} />
-          ))}
+          {eventosDatos.length === 0 ? (
+            <h2 className="text-center mt-5">Aún no hay eventos</h2>
+          ) : (
+            eventosDatos.map((evento) => (
+              <EventosList key={evento._id} event={evento} />
+            ))
+          )}
         </div>
 
         <div id="container-floating">

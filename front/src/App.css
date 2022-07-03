@@ -233,7 +233,8 @@ ul > li {
 .cuerpoLista{
   position: relative;
   overflow-y: scroll;
-  height: 55vh;
+  min-height: 50vh;
+  max-height: 55vh;
 }
 
 /* Form login classes */
@@ -362,4 +363,5 @@ ul > li {
 
 .lh-3 {
   line-height: 3rem;
+  text-decoration: none;
 }

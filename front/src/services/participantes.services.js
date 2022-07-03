@@ -51,8 +51,25 @@ async function participacion(evento_id, estado) {
   }
 }
 
+async function addContactToEvent(evento_id, friend_id) {
+  console.log('%cparticipantes.services.js line:55 evento_id, friend_id', 'color: #007acc;', evento_id, friend_id);
+  
+    return fetch(`${URL_API}/api/participantes/${evento_id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        friend_id: friend_id,
+        estado: 0
+      })
+    })
+}
+
 export { 
   find, 
   findByEventId,
-  participacion 
+  participacion,
+  addContactToEvent
 };

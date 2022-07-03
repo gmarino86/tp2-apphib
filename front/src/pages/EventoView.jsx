@@ -6,6 +6,7 @@ import * as ParticipantesServices from "../services/participantes.services";
 
 function EventoView() {
   const { evento_id } = useParams();
+  
   const [evento, setEvento] = useState({
     cantParticipantes: 0,
     deporte: "",
@@ -31,8 +32,7 @@ function EventoView() {
         })
       })
     }
-    // eslint-disable-next-line
-  }, [])
+  }, [evento_id])
 
   return (
     <div>

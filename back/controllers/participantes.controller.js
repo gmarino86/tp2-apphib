@@ -20,9 +20,17 @@ function participacion(req, res) {
     .then(participacion => res.json(participacion))
 }
 
+function addContactToEvent(req,res){
+    const evento_id = req.params.evento_id;
+    const friend_id = req.body.friend_id;
+    const estado = req.body.estado;
+    return service.addContactToEvent(evento_id, friend_id,estado)
+    .then(participacion => res.json(participacion))
+}
 
 export {
     find,
     findByEventId,
-    participacion
+    participacion,
+    addContactToEvent
 }

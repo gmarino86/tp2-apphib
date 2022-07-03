@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar.page";
-import ListContactos from "../components/Contactos/ListContactos.jsx";
 import * as ContactService from "../services/contactos.services";
+import ListContactos from "../components/Contactos/ListContactos.jsx";
+import Navbar from "./Navbar.page";
 
 function Contactos() {
     const [contactos, setContactos] = useState([]);
@@ -16,7 +15,6 @@ function Contactos() {
         .catch((error) => {
             console.log("error", error);
         });
-        // eslint-disable-next-line
     }, []);
 
     return (
