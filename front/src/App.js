@@ -18,8 +18,7 @@ function App() {
     if (!token || token === "undefined") {
       navigate("/login", { replace: true });
     }
-    // eslint-disable-next-line
-  }, []);
+  }, [navigate]);
 
   function onLogin(user, token) {
     localStorage.setItem("user", JSON.stringify(user));

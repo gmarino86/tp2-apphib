@@ -45,6 +45,7 @@ function FormEventoNuevo(){
             estado: 1,
         }
         EventosService.create(evento)
+
         .then(response => {
             navigate('/', { replace: true });
         })
@@ -61,33 +62,33 @@ function FormEventoNuevo(){
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="titulo" className="form-label">Título</label>
-                        <input type="text" value={titulo} onChange={handleTitulo} name="titulo" className="form-control" id="titulo" aria-describedby="tituloHelp" />
+                        <input type="text" value={titulo} onChange={handleTitulo} name="titulo" required className="form-control" id="titulo" aria-describedby="tituloHelp" />
                         <div id="tituloHelp" className="form-text">Ingresá el nombre del evento.</div>
                     </div>
                     <div className="row g-2">
                         <div className="col-6">
                             <label htmlFor="dia" className="form-label">Día</label>
-                            <input type="date" value={dia} onChange={handleDia} name="dia" className="form-control" id="dia" aria-describedby="diaHelp" />
+                            <input type="date" value={dia} onChange={handleDia} name="dia" required className="form-control" id="dia" aria-describedby="diaHelp" />
                             <div id="diaHelp" className="form-text">Seleccioná fecha y hora.</div>
                         </div>
                         <div className="col-6">
                             <label htmlFor="hora" className="form-label">Hora</label>
-                            <input type="time" value={hora} onChange={handleHora} name="hora" className="form-control" id="hora" aria-describedby="horaHelp" />
+                            <input type="time" value={hora} onChange={handleHora} name="hora" required className="form-control" id="hora" aria-describedby="horaHelp" />
                         </div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="lugar" className="form-label">Dirección</label>
-                        <input type="text" value={lugar} onChange={handleLugar} name="lugar" className="form-control" id="lugar" aria-describedby="lugarHelp" />
+                        <input type="text" value={lugar} onChange={handleLugar} name="lugar" required className="form-control" id="lugar" aria-describedby="lugarHelp" />
                         <div id="lugarHelp" className="form-text">Ingresá la dirección del evento.</div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="deporte" className="form-label">Deporte</label>
-                        <input type="text" value={deporte} onChange={handleDeporte} name="deporte" className="form-control" id="deporte" aria-describedby="deporteHelp" />
+                        <input type="text" value={deporte} onChange={handleDeporte} name="deporte" required className="form-control" id="deporte" aria-describedby="deporteHelp" />
                         <div id="deporteHelp" className="form-text">Seleccioná el deporte.</div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="cantParticipantes" className="form-label">Participantes</label>
-                        <input type="number" value={cantParticipantes} onChange={handleCantParticipantes} name="cantParticipantes" className="form-control" id="cantParticipantes" aria-describedby="cantParticipantesHelp" />
+                        <input type="number" value={cantParticipantes} onChange={handleCantParticipantes} required name="cantParticipantes" className="form-control" id="cantParticipantes" aria-describedby="cantParticipantesHelp" />
                         <div id="cantParticipantesHelp" className="form-text">Cantidad de participantes: {cantParticipantes}</div>
                     </div>
                     <div className="d-grid gap-2">
