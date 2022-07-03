@@ -26,7 +26,6 @@ async function findContactsNew(name){
 
 
 async function addContact(userId, contactId){
-    console.log(userId, contactId)
     return fetch(`${URL_API}/api/contactos/${userId}/${contactId}`, {
         method: 'POST',
         headers: {

@@ -1,17 +1,15 @@
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as ServiceContactos from "../../services/contactos.services";
 
 function ListContactosBuscar({ contacto }) {
-  useEffect(() => {
-      console.log('%cListContactosBuscar.jsx line:7 contacto', 'color: #007acc;', contacto);
-  }, [contacto]); 
-  
+  const navigate = useNavigate();
+
   function agregarContacto(idC) {
     let idU = JSON.parse(localStorage.getItem('user'));
     idU = idU._id;
     ServiceContactos.addContact(idU, idC)
-    .then(contacto => {
-      console.log('%cListContactosBuscar.jsx line:15 contacto', 'color: #007acc;', contacto);
+    .then(res => {
+        navigate("/buscarContactos");
     })
   }
 

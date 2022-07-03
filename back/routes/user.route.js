@@ -7,6 +7,7 @@ const router = express.Router();
 router.post("/", UserController.create);
 router.post("/login", UserController.login);
 router.post("/contactos", [autorization], UserController.findAllContacts);
+router.post("/jugadores", [autorization], UserController.findAllPlayers);
 router.get("/:user_id", [autorization], UserController.findByID);
 
 export default router;

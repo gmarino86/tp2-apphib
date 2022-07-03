@@ -45,9 +45,7 @@ function FormEventoNuevo(){
             estado: 1,
         }
         EventosService.create(evento)
-            .then(response => {
-                console.log(response);
-                
+            .then(response => {                
                 navigate('/', { replace: true });
             })
             .catch(error => {

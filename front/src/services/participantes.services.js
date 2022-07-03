@@ -41,7 +41,7 @@ async function participacion(evento_id, estado) {
       },
       body: JSON.stringify({
         user_id: JSON.parse(localStorage.getItem("user"))._id,
-        estado: estado,
+        estado: estado
       }),
     })
       .then((response) => response.json())
@@ -51,24 +51,8 @@ async function participacion(evento_id, estado) {
   }
 }
 
-async function noParticipacion(evento_id) {
-  if (localStorage.getItem("user")) {
-    return fetch(`${URL_API}/api/participantes/${evento_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        user_id: JSON.parse(localStorage.getItem("user"))._id,
-        estado: 0,
-      }),
-    })
-      .then((response) => response.json())
-      .catch((error) => console.log(error));
-  } else {
-    window.location.href = "/login";
-  }
-}
-
-export { find, findByEventId, participacion, noParticipacion };
+export { 
+  find, 
+  findByEventId,
+  participacion 
+};
