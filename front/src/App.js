@@ -34,7 +34,7 @@ function App() {
         <Route path="/evento/crear" element={<FormEventoNuevo />} />
         <Route path="/login" element={<FormLogin onLogin={onLogin} />} />
         <Route path="/contactos" element={<Contactos />} />
-        <Route path="/registro" element={<Register />} />
+        <Route path="/usuario_nuevo" element={<Register />} />
         <Route path="/buscarContactos" element={<BuscarContactos />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

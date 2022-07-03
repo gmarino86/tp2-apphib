@@ -1,6 +1,5 @@
 import { useState } from "react";
 import * as UserService from "../services/user.services";
-import NavbarPage from "./Navbar.page";
 import {Link} from 'react-router-dom';
 
 
@@ -23,7 +22,6 @@ function FormLogin({ onLogin }) {
 
   return (
     <>
-      <NavbarPage></NavbarPage>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <div className="avatar text-center"></div>
@@ -65,7 +63,7 @@ function FormLogin({ onLogin }) {
         </form>
         {error && <div className="alert alert-danger">{error}</div>}
         <div className="text-center small">
-            No tenés una cuenta? <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/registro">Registrate</Link>
+            No tenés una cuenta? <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/usuario_nuevo">Registrate</Link>
         </div>
       </div>
     </>

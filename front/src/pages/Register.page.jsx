@@ -1,22 +1,20 @@
 import { useState } from "react";
 import * as UserService from "../services/user.services";
-import NavbarPage from "./Navbar.page";
 
-// Crear una pagina para registro que tenga nombre apellido mail y pass
 function Registro() {
+  
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
-
+  
   function handleSubmit(e) {
     e.preventDefault();
     UserService.create({ name, lastName, mail, pass })
     .then((user) => {
       if(user){
         setError("");
-        window.location.href = "/login";
       } else {
         setError("Usuario ya existe");
       }
@@ -27,8 +25,6 @@ function Registro() {
   }
 
   return (
-    <>
-      <NavbarPage></NavbarPage>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <div className="avatar text-center"></div>
@@ -81,11 +77,6 @@ function Registro() {
               aria-describedby="passHelp"
             />
           </div>
-          <div className="form-group small clearfix">
-            <a href="/" className="forgot-link">
-              Olvidaste tu contraseña?
-            </a>
-          </div>
           <input
             type="submit"
             className="btn btn-primary btn-block btn-lg"
@@ -95,7 +86,6 @@ function Registro() {
         {error && <p className="text-danger">{error}</p>}
         
       </div>
-    </>
   );
 }
 

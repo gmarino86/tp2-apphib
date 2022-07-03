@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as ContactService from "../services/contactos.services";
 import ListContactos from "../components/Contactos/ListContactos.jsx";
-import Navbar from "./Navbar.page";
 
 function Contactos() {
     const [contactos, setContactos] = useState([]);
@@ -19,7 +18,6 @@ function Contactos() {
 
     return (
         <>
-        <Navbar />
         <div className="container">
             <div className="d-flex justify-content-between">
             <h1>Contactos</h1>
@@ -28,11 +26,11 @@ function Contactos() {
             </Link>
             </div>
             <div className="row">
-                {contactos === [] || contactos === undefined || contactos === null ? (
-                    <h2 className="text-center mt-5">Aún no tenés contactos</h2>
-                ) : (
-                    <ListContactos contactos={contactos} />
-                )}
+            {contactos === [] || contactos === undefined || contactos === null ? (
+                <h2 className="text-center mt-5">Aún no tenés contactos</h2>
+            ) : (
+                <ListContactos contactos={contactos} />
+            )}
             </div>
         </div>
         </>

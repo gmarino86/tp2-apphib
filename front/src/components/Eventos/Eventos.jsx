@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as ParticipantesServices from "../../services/participantes.services";
 import * as EventosServices from "../../services/eventos.services";
-import NavbarPage from "../../pages/Navbar.page";
 import EventosList from "./EventosList";
 
 function Evento() {
@@ -20,7 +19,6 @@ function Evento() {
 
   return (
     <div>
-      <NavbarPage></NavbarPage>
       <div className="container">
         <h1>Eventos</h1>
         <div className="row mt-3">
