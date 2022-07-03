@@ -6,7 +6,16 @@ import * as ParticipantesServices from "../services/participantes.services";
 
 function EventoView() {
   const { evento_id } = useParams();
-  const [evento, setEvento] = useState({});
+  const [evento, setEvento] = useState({
+    cantParticipantes: 0,
+    deporte: "",
+    dia: "",
+    estado: 0,
+    hora: "",
+    lugar: "",
+    titulo: "",
+    _id: ""
+  });
   const [participantes, setParticipantes] = useState([]);
   
   useEffect(() => {

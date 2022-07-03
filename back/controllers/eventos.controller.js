@@ -1,4 +1,5 @@
 import * as service from '../services/eventos.service.js';
+import * as ParticipantesServices from '../services/participantes.service.js';
 
 function findAll(req, res) {
     return service.find()
@@ -6,9 +7,13 @@ function findAll(req, res) {
 }
 
 function create(req, res) {
-    const evento = req.body;
+    const evento = req.body.evento_id;
+    const user_id = req.body.user_id;
     return service.create(evento)
-    .then(evento => res.json(evento))
+    .then(evento => {
+        return ParticipantesServices.insertUTE(evento.insertedId, user_id)
+        .then(evento => res.json(evento))
+    })
 }
 
 function findByID(req, res) {

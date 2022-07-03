@@ -30,7 +30,11 @@ function Contactos() {
             </Link>
             </div>
             <div className="row">
-                <ListContactos contactos={contactos} />
+                {contactos === [] || contactos === undefined || contactos === null ? (
+                    <h2 className="text-center mt-5">Aún no tenés contactos</h2>
+                ) : (
+                    <ListContactos contactos={contactos} />
+                )}
             </div>
         </div>
         </>

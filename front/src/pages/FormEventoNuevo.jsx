@@ -45,13 +45,13 @@ function FormEventoNuevo(){
             estado: 1,
         }
         EventosService.create(evento)
-            .then(response => {                
-                navigate('/', { replace: true });
-            })
-            .catch(error => {
-                console.log(error);
-            }
-            )
+        .then(response => {
+            console.log('%cFormEventoNuevo.jsx line:49 response', 'color: #007acc;', response);
+            navigate('/', { replace: true });
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
     return (

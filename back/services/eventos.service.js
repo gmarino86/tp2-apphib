@@ -19,11 +19,11 @@ async function findByID(idEvento){
     return evento
 }
 
-async function create(evento){
+async function create(event){
     await client.connect()
     const db = client.db('armaelequipo')
     const collection = db.collection('eventos')
-    await collection.insertOne(evento)
+    const evento = await collection.insertOne(event)
     await client.close()
     return evento
 }

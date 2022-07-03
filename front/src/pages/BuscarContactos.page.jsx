@@ -14,6 +14,7 @@ function BuscarContactos(){
     function handleSubmit(e){
         e.preventDefault();
         if(nombre){
+            setError("");
             ContactService.findContactsNew(nombre)
             .then(contacts => {
                 setContactos(contacts);

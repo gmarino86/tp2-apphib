@@ -7,6 +7,6 @@ router.get("/:user_id", [autorization], ContactosController.findContacts);
 //Busca por nombre
 router.get("/nombre/:name", [autorization], ContactosController.findContactsBuscar);
 // Agrega un contacto
-router.post("/:idU/:idC", [autorization], ContactosController.addContact);
+router.post("/:user_id/:friend_id", [autorization], ContactosController.addContact);
 
 export default router;

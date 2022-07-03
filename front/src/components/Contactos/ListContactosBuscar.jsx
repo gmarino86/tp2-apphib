@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import * as ServiceContactos from "../../services/contactos.services";
 
 function ListContactosBuscar({ contacto }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   function agregarContacto(idC) {
     let idU = JSON.parse(localStorage.getItem('user'));
     idU = idU._id;
     ServiceContactos.addContact(idU, idC)
-    .then(res => {
-        navigate("/buscarContactos");
+    .then(() => {
+        window.location.reload();
     })
   }
 

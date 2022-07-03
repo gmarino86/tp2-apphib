@@ -10,7 +10,7 @@ async function findContacts() {
             'auth-token': localStorage.getItem('token')
         }
     })
-    .then(response => response.json())   
+    .then(response => response.json())
 }
 
 async function findContactsNew(name){
@@ -25,8 +25,8 @@ async function findContactsNew(name){
 }
 
 
-async function addContact(userId, contactId){
-    return fetch(`${URL_API}/api/contactos/${userId}/${contactId}`, {
+async function addContact(user_id, friend_id){
+    return fetch(`${URL_API}/api/contactos/${user_id}/${friend_id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
