@@ -33,13 +33,23 @@ function findByID(req, res) {
 }
 function findAllContacts(req, res) {
     const contactos = req.body;
-    return service.findAllContacts(contactos)
+    const friend_ids = contactos.map(contacto => contacto.friend_id);
+    return service.findAllContacts(friend_ids)
+    .then(jugadores => {
+        res.json(jugadores)
+    })
+}
+
+function findAllPlayers(req, res) {
+    const user_ids = req.body;
+    return service.findAllPlayers(user_ids)
     .then(jugadores => {
         res.json(jugadores)
     })
 }
 
 export {
+    findAllPlayers,
     findAllContacts,
     findByID,
     login,

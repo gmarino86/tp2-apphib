@@ -6,19 +6,25 @@ import ListContactosBuscar from "../components/Contactos/ListContactosBuscar.jsx
 function BuscarContactos(){
     const [nombre, setNombre] = useState("");
     const [contactos, setContactos] = useState([]);
+    const [error, setError] = useState("");
 
     useEffect(() => {    
     }, []);
 
     function handleSubmit(e){
         e.preventDefault();
-        ContactService.findContactsNew(nombre)
-        .then(contacts => {
-            setContactos(contacts);
-        })
-        .catch(error => {
-            console.log("error", error);
-        });
+        if(nombre){
+            setError("");
+            ContactService.findContactsNew(nombre)
+            .then(contacts => {
+                setContactos(contacts);
+            })
+            .catch(error => {
+                console.log("error", error);
+            });
+        } else {
+            setError("Ingrese un nombre");
+        }
     }
     
     return(
@@ -28,9 +34,10 @@ function BuscarContactos(){
                 <h1>Buscar Contactos</h1>
 
                 <form className="d-flex" role="search" onSubmit={handleSubmit}>
-                    <input className="form-control me-2" name="name" value={nombre} onChange={(e) => setNombre(e.target.value)} type="search" placeholder="Ingresá un nombre" aria-label="Search" />
+                    <input className="form-control me-2" name="name"  value={nombre} onChange={(e) => setNombre(e.target.value)} type="search" placeholder="Ingresá un nombre" aria-label="Search" />
                     <button className="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
+                {error && <p className="text-danger">{error}</p>}
 
                 <div className="row mt-3">
                     {
@@ -44,5 +51,4 @@ function BuscarContactos(){
         </>
     )
 }
-
-export default BuscarContactos;
+export default BuscarContactos

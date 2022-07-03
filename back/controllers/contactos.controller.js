@@ -17,9 +17,9 @@ function findContactsBuscar(req, res) {
 }
 
 function addContact(req,res){
-    const idU = req.params.idU;
-    const idC = req.params.idC;
-    return service.addContact(idU, idC)
+    const user_id = req.params.user_id;
+    const friend_id = req.params.friend_id;
+    return service.addContact(user_id, friend_id)
     .then(contacto => res.json(contacto))
 }
 

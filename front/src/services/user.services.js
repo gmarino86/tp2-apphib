@@ -41,8 +41,8 @@ async function login({mail, pass}) {
     })
 }
 
+// Trae los contactos de un usuario
 async function getAllUsers(contactos){
-    console.log('%cuser.services.js line:45 contactos', 'color: #007acc;', contactos);
     if(contactos.length > 0){
         return fetch(`${URL_API}/api/user/contactos`, {
             method: 'POST',
@@ -58,9 +58,27 @@ async function getAllUsers(contactos){
     }
 }
 
+// Trae los contactos de un usuario
+async function getAllPlayers(user_ids){
+    if(user_ids.length > 0){
+        return fetch(`${URL_API}/api/user/jugadores`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('token'),
+            },
+            body: JSON.stringify(user_ids)
+        })
+        .then(response => response.json())
+    } else{
+        return []
+    }
+}
+
 export {
     create,
     findByID,
     login,
-    getAllUsers
+    getAllUsers,
+    getAllPlayers
 }

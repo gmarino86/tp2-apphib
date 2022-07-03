@@ -20,12 +20,11 @@ async function findContactsBuscar(nombre){
     return contactos
 }
 
-async function addContact(idU, idC){
-    console.log('%ccontactos.service.js line:27 idU, idC', 'color: #007acc;', idU, idC);
+async function addContact(user_id, friend_id){
     await client.connect()
     const db = client.db('armaelequipo')
     const collection = db.collection('contactos')
-    const user = await collection.insertOne({"id_user": ObjectId(`${idU}`), "id_friend": ObjectId(`${idC}`)})
+    const user = await collection.insertOne({"user_id": ObjectId(`${user_id}`), "friend_id": ObjectId(`${friend_id}`)})
     await client.close()
     return user
 }

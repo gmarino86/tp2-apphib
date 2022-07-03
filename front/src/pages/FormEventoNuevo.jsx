@@ -45,15 +45,12 @@ function FormEventoNuevo(){
             estado: 1,
         }
         EventosService.create(evento)
-            .then(response => {
-                console.log(response);
-                
-                navigate('/', { replace: true });
-            })
-            .catch(error => {
-                console.log(error);
-            }
-            )
+        .then(response => {
+            navigate('/', { replace: true });
+        })
+        .catch(error => {
+            console.log("Error al grabar el evento");
+        })
     }
 
     return (

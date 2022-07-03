@@ -231,9 +231,9 @@ ul > li {
 }
 
 .cuerpoLista{
-  max-height: 85vh;
-  min-height: 85vh;
+  position: relative;
   overflow-y: scroll;
+  height: 55vh;
 }
 
 /* Form login classes */

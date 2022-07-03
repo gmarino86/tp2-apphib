@@ -22,7 +22,6 @@ function Registro() {
       }
     })
     .catch((err) => {
-      console.log("Error: ", err);
       setError(err.message);
     });
   }

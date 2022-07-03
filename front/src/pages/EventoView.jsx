@@ -2,22 +2,37 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Participantes from "../components/Participantes/Participantes";
 import * as EventosServices from "../services/eventos.services";
+import * as ParticipantesServices from "../services/participantes.services";
 
 function EventoView() {
   const { evento_id } = useParams();
-
+  const [evento, setEvento] = useState({
+    cantParticipantes: 0,
+    deporte: "",
+    dia: "",
+    estado: 0,
+    hora: "",
+    lugar: "",
+    titulo: "",
+    _id: ""
+  });
+  const [participantes, setParticipantes] = useState([]);
   
   useEffect(() => {
     if(evento_id){
       EventosServices.findByID(evento_id)
-      .then((evento) => {
-        setEvento(evento)
+      .then((event) => {
+        setEvento(event);
+      })
+      .then(() => {
+        ParticipantesServices.findByEventId(evento_id)
+        .then(jugadores => {
+          setParticipantes(jugadores)
+        })
       })
     }
     // eslint-disable-next-line
   }, [])
-  
-  const [evento, setEvento] = useState({});
 
   return (
     <div>
@@ -31,7 +46,7 @@ function EventoView() {
 
       <div className="d-flex align-content-between flex-wrap">
         <div className="container-fluid">
-          <div className="container pt-3 cuerpoLista">
+          <div className="container pt-3">
             <div className="card border-success mb-3">
               <div className="card-header border-success text-center">
                 <h1>{evento.titulo}</h1>
@@ -52,8 +67,8 @@ function EventoView() {
                 </div>
               </div>
             </div>
-            <Participantes evento={evento} />
-          </div> 
+            <Participantes players={participantes} evento_id={evento_id} />
+          </div>
         </div>
       </div>
     </div>

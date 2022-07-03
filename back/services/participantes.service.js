@@ -16,7 +16,6 @@ async function findParticipantes(evento_id, cantidad){
     const db = client.db('armaelequipo')
     const collection = db.collection('participantes')
     const contactos = await collection.find({"evento_id": ObjectId(evento_id), estado: 1}).limit(parseInt(cantidad)).sort({updated_at: 1}).toArray()
-    // console.log('%cparticipantes.service.js line:20 contactos', 'color: #007acc;', contactos);
     await client.close()
     return contactos
 }
@@ -27,7 +26,7 @@ async function participacion(evento_id, user_id, estado){
     const collection = db.collection('participantes')
     const eventos = await collection.findOneAndUpdate(
         { evento_id: ObjectId(evento_id), user_id: ObjectId(user_id) },
-        { $set: { estado: estado } },
+        { $set: { estado: estado , updated_at: new Date()} },
         { returnOriginal: false }
     )
     await client.close()
@@ -37,14 +36,24 @@ async function findByEventId(evento_id){
     await client.connect()
     const db = client.db('armaelequipo')
     const collection = db.collection('participantes')
-    const participantes = await collection.find({ evento_id: ObjectId(evento_id) }).toArray()
+    const participantes = await collection.find({ evento_id: ObjectId(evento_id), estado: 1 }).sort({updated_at : 1}).toArray()
     await client.close()
     return participantes
+}
+
+async function insertUTE(evento_id, user_id){
+    await client.connect()
+    const db = client.db('armaelequipo')
+    const collection = db.collection('participantes')
+    const eventos = await collection.insertOne({ evento_id: evento_id, user_id: ObjectId(user_id), estado: 1, updated_at: new Date() })
+    await client.close()
+    return eventos
 }
 
 export {
     find,
     findParticipantes,
     participacion,
-    findByEventId
+    findByEventId,
+    insertUTE
 }

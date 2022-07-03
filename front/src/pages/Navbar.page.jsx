@@ -14,27 +14,6 @@ function Navbar() {
 
   return (
     <>
-      {/* <nav className="navbar navbar-expand-lg">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-              <img src={logo} width="50" alt="Arma el Equipo"></img>
-          </Link>
-
-          <ul className="navbar-nav">
-            <li className="nav-item d-flex">
-              <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/">
-              Contactos
-              </Link>
-              { !user ? <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/login">
-                Login
-              </Link> :
-              <button className="btn btn-sm btn-outline-success my-2 my-sm-0" type="button" onClick={logout}>Salir</button>
-              }
-            </li>
-          </ul>
-        </div>
-      </nav> */}
-
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
@@ -48,17 +27,32 @@ function Navbar() {
 
             <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul className="navbar-nav text-center">
-                <li className="nav-item">
-                <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/login">
-                  Login
-                </Link>
+                
+                {!localStorage.getItem("user") ? (
+                  <li className="nav-item">
+                    <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                ) : (
+                  <>
+                  <li className="nav-item">
+                    <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/">
+                      Eventos
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/contactos">
+                      Contactos
+                    </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link custom-nav-link px-2" aria-current="page" to="/contactos">
-                  Contactos
-                  </Link>
-                </li>
+                </>
+                )}
+                {localStorage.getItem("user") ? (
                 <button className="btn btn-sm btn-outline-success my-2 my-sm-0" type="button" onClick={logout}>Salir</button>
+                ) : ("")}
+                
+                
               </ul>
             </div>
           

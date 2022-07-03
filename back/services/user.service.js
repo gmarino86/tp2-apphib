@@ -48,47 +48,47 @@ async function login({mail, pass}){
     }    
 }
 
-async function getAllUsers(partic){
-    console.log('%cuser.service.js line:52 partic', 'color: #007acc;', partic);
-    if(partic.length > 0){
-        let ids = ""
-        partic.forEach(element => {
-            ids += `ObjectId("${element.user_id}"), `
-        });
-        console.log('%cuser.service.js line:56 ids', 'color: #007acc;', ids);
-        
-        await client.connect()
-        const db = client.db('armaelequipo')
-        const collection = db.collection('user')
-        const users = await collection.find({_id: {$in: [ids]}}).toArray()
-        console.log('%cuser.service.js line:57 users', 'color: #007acc;', users);
-        await client.close()
-        return users
+async function findAllContacts(friend_ids){
+    let ids = []
+    for (let i = 0; i < friend_ids.length; i++) {
+        const f = new ObjectId(friend_ids[i]);
+        ids.push(f)
     }
+    await client.connect()
+    const db = client.db('armaelequipo')
+    const collection = db.collection('user')
+    const users = await collection.find({"_id": {$in: ids}}).toArray()
+    let contacts = []
+    users.map(user => {
+        contacts.push({...user, pass: undefined})
+    })
+    await client.close()
+    return contacts
 }
 
-async function findAllContacts(contactos){
-    console.log('%cuser.service.js line:72 contactos', 'color: #007acc;', contactos);
-    if(contactos.length > 0){
-        let ids = ""
-        contactos.forEach(e => {
-            ids += `ObjectId("${e.friend_id}"), `
-        });
-        console.log('%cuser.service.js line:77 ids', 'color: #007acc;', ids);
-        await client.connect()
-        const db = client.db('armaelequipo')
-        const collection = db.collection('user')
-        const users = await collection.find({"_id": {$in: [`${ids}`]}}).toArray()
-        console.log('%cuser.service.js line:82 contacts', 'color: #007acc;', users);
-        await client.close()
-        return users
-    };
+async function findAllPlayers(user_ids){
+    let ids = []
+    for (let i = 0; i < user_ids.length; i++) {
+        const f = new ObjectId(user_ids[i]);
+        ids.push(f)
+    }
+    await client.connect()
+    const db = client.db('armaelequipo')
+    const collection = db.collection('user')
+    const jugadores = await collection.find({"_id": {$in: ids}}).toArray()
+    let players = []
+    jugadores.map(user => {
+        players.push({...user, pass: undefined})
+    })
+    await client.close()
+    return players
 }
 
 export {
+    findAllPlayers,
     findAllContacts,
     findByID,
     create,
-    login,
-    getAllUsers
+    login
 }
+
