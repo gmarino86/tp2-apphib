@@ -46,11 +46,10 @@ function FormEventoNuevo(){
         }
         EventosService.create(evento)
         .then(response => {
-            console.log('%cFormEventoNuevo.jsx line:49 response', 'color: #007acc;', response);
             navigate('/', { replace: true });
         })
         .catch(error => {
-            console.log(error);
+            console.log("Error al grabar el evento");
         })
     }
 

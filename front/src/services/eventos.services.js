@@ -27,7 +27,6 @@ async function findByID(evento_id) {
 
 async function create(evento) {
     const user_id = JSON.parse(localStorage.getItem('user'))._id
-    console.log('%ceventos.services.js line:29 evento', 'color: #007acc;', evento);
     return fetch(`${URL_API}/api/eventos`, {
         method: 'POST',
         body: 

@@ -5,7 +5,6 @@ import bcrypt from 'bcrypt'
 const client = new MongoClient('mongodb://127.0.0.1:27017')
 
 async function findByID(user_id){
-    console.log("Entro a user.service.js line:87");
     await client.connect()
     const db = client.db('armaelequipo')
     const collection = db.collection('user')
