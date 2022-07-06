@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import * as ContactService from "../services/contactos.services";
-import Navbar from "../pages/Navbar.page";
 import ListContactosBuscar from "../components/Contactos/ListContactosBuscar.jsx";
 
 function BuscarContactos(){
@@ -29,7 +28,6 @@ function BuscarContactos(){
     
     return(
         <>
-            <Navbar />
             <div className="container">
                 <h1>Buscar Contactos</h1>
 
@@ -41,12 +39,11 @@ function BuscarContactos(){
 
                 <div className="row mt-3">
                     {
-                        contactos.map(contacto => (
-                            <ListContactosBuscar key={contacto._id} contacto={contacto} />
-                        ))
+                        contactos.length > 0 ? contactos.map((contacto) => (
+                            <ListContactosBuscar key={contacto._id} contacto={contacto}></ListContactosBuscar>
+                        )) : <h2 className="text-center mt-4">No hay contactos</h2>
                     }
                 </div>
-
             </div>
         </>
     )

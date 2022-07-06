@@ -52,7 +52,6 @@ async function participacion(evento_id, estado) {
 }
 
 async function addContactToEvent(evento_id, friend_id) {
-  console.log('%cparticipantes.services.js line:55 evento_id, friend_id', 'color: #007acc;', evento_id, friend_id);
   
     return fetch(`${URL_API}/api/participantes/${evento_id}`, {
       method: "POST",

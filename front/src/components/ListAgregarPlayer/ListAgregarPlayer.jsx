@@ -5,7 +5,7 @@ import * as ParticipantesServices from "../../services/participantes.services";
 
 function ListAgregarPlayer({evento_id, participantes}){
     const [playersToAdd, setPlayersToAdd] = useState([]);
-
+    
     useEffect(() => {
         ContactosServices.findContacts()
         .then((contactos) => {
@@ -19,8 +19,6 @@ function ListAgregarPlayer({evento_id, participantes}){
                     });
                     return !existe;
                 });
-                console.log('%cListAgregarPlayer.jsx line:22 contactosFiltrados', 'color: #007acc;', participantes);
-                
                 UserServices.getAllUsers(contactosFiltrados)
                 .then((users) => {
                     if(users !== {}){
@@ -40,9 +38,8 @@ function ListAgregarPlayer({evento_id, participantes}){
 
     return (
         <>
-            <ul className="list-group">
-
-                {playersToAdd.map((player) => (
+            <ul className="list-group">                    
+                { playersToAdd.map((player) => (
                     <li className="list-group-item d-flex justify-content-between" key={player._id}> 
                         <div className="pt-3">{player.name} {player.lastName}</div>
                         <div onClick={() => addPlayer(player._id)} data-bs-dismiss="modal" ><i className="bi bi-person-plus-fill text-success"></i></div>
@@ -52,5 +49,4 @@ function ListAgregarPlayer({evento_id, participantes}){
         </>
     )
 }
-
 export default ListAgregarPlayer

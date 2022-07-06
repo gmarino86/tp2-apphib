@@ -9,7 +9,9 @@ function find(req, res) {
 function findByEventId(req, res) {
     const evento_id = req.params.evento_id;
     return service.findByEventId(evento_id)
-    .then(participacion => res.json(participacion))
+    .then(participacion => {
+        res.json(participacion)
+    })
 }
 
 function participacion(req, res) {
