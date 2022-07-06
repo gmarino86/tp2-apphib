@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import * as bootstrap from 'bootstrap'
+
 import * as UserServices from "../../services/user.services";
 import * as ParticipantesServices from "../../services/participantes.services";
 import UserEventosList from "../UserEventosList/UserEventosList";
@@ -8,10 +10,16 @@ function Participantes({ players, evento_id }) {
   const [participantes, setParticipantes] = useState([]);
   const [estado, setEstado] = useState(0);
 
-  console.log('%cParticipantes.jsx line:11 players', 'color: #007acc;', players);
   useEffect(() => {
     if(players !== []){
-      const user_ids = players.map((player) => player.user_id);
+      let PlayersGo = []
+      players.forEach(j => {
+        if(j.estado === 1){
+          PlayersGo.push(j)
+        }
+      });
+      
+      const user_ids = PlayersGo.map((jugadores) => jugadores.user_id);
       UserServices.getAllPlayers(user_ids)
       .then((users) => {
         setParticipantes(users);
@@ -24,7 +32,7 @@ function Participantes({ players, evento_id }) {
         }
       });
     }
-  }, [players, evento_id]);
+  }, [players]);
 
   function participar(){
     ParticipantesServices.participacion(evento_id, 1)
@@ -42,24 +50,29 @@ function Participantes({ players, evento_id }) {
     });
   }
 
+  function openModal(){
+    const modalShowAddPlayer = new bootstrap.Modal('#modalAddPlayer', {
+      toogle: true
+    })
+    return modalShowAddPlayer.show();
+  }
+
   return (
     <>
       <div className="card mb-3 cuerpoLista">
-        <div className="card-header d-flex justify-content-between">
-          <h2>Participantes</h2>
-          <div className="btn-group">
-            <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <i className="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul className="dropdown-menu dropdown-menu-end">
-              <li><button className="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#modalAddPlayer">Agregar participantes</button></li>
-            </ul>
+        <div className="card-header">
+          <div className="d-flex justify-content-between">
+            <h2 className="mt-3">Participantes</h2>
+            {/* <button className="btn" type="button" data-bs-toggle="modal" data-bs-target="#modalAddPlayer"><i className="bi bi-person-plus-fill"></i></button> */}
+            <button className="btn" type="button" onClick={openModal}><i className="bi bi-person-plus-fill"></i></button>
           </div>
         </div>
         <ol className="list-group list-group-numbered">
-          {participantes.map((jugador) => (
+          {participantes.length > 0 ? participantes.map((jugador) => (
             <UserEventosList key={jugador._id} user={jugador}></UserEventosList>
-          ))}
+          )) : (
+            <p className="text-center mt-4">Aún nadie confirmó</p>
+          )}
         </ol>
       </div>
       <div className="container text-center">
@@ -82,12 +95,15 @@ function Participantes({ players, evento_id }) {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              <ListAgregarPlayer evento_id={evento_id} participantes={participantes} />
+              { participantes.length > 0 ? (
+                <ListAgregarPlayer evento_id={evento_id} participantes={participantes} />
+              ) : (
+                <p className="text-center mt-4">No hay contactos para agregar</p>
+              )}
 
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Save changes</button>
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
         </div>

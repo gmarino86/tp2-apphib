@@ -11,20 +11,11 @@ async function find(user_id) {
     return eventos
 } 
 
-// async function findParticipantes(evento_id, cantidad){
-//     await client.connect()
-//     const db = client.db('armaelequipo')
-//     const collection = db.collection('participantes')
-//     const contactos = await collection.find({"evento_id": ObjectId(evento_id), estado: 1}).limit(parseInt(cantidad)).sort({updated_at: 1}).toArray()
-//     await client.close()
-//     return contactos
-// }
-
 async function findByEventId(evento_id){
     await client.connect()
     const db = client.db('armaelequipo')
     const collection = db.collection('participantes')
-    const participantes = await collection.find({ evento_id: ObjectId(evento_id), estado: 1 }).sort({"updated_at" : -1}).toArray()
+    const participantes = await collection.find({ evento_id: ObjectId(evento_id) }).sort({updated_at : -1}).toArray()
     await client.close()
     return participantes
 }
@@ -67,7 +58,6 @@ async function addContactToEvent(evento_id, user_id, estado){
 
 export {
     find,
-    // findParticipantes,
     insertUTE,
     findByEventId,
     participacion,

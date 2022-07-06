@@ -13,8 +13,8 @@ function ContactosCard({contacto}) {
                 <div className="card-body d-flex justify-content-between">
                     <div className="d-flex">
                         <div className="mr-3">
-                            <p>{user.name}</p>
-                            <p>{user.mail}</p>
+                            <p className="mb-0">{user.name} {user.lastName}</p>
+                            <p className="mb-0">{user.mail}</p>
                         </div>
                     </div>
                 </div>

@@ -233,8 +233,7 @@ ul > li {
 .cuerpoLista{
   position: relative;
   overflow-y: scroll;
-  min-height: 45vh;
-  max-height: 50vh;
+  height: 50vh;
 }
 
 /* Form login classes */
@@ -364,4 +363,10 @@ ul > li {
 .lh-3 {
   line-height: 3rem;
   text-decoration: none;
+}
+.btn-outline-success>i :hover{
+  color: white !important;
+}
+.cardTituloEvento{
+  margin-top: -15px;
 }

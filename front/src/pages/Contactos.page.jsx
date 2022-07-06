@@ -25,7 +25,7 @@ function Contactos() {
                 Buscar Contactos
             </Link>
             </div>
-            <div className="row">
+            <div className="row mt-4">
             {contactos === [] || contactos === undefined || contactos === null ? (
                 <h2 className="text-center mt-5">Aún no tenés contactos</h2>
             ) : (

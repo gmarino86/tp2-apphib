@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 function UserEventosList({ user }) {
     useEffect(() => {
-        console.log('%cUserEventosList.jsx line:5 user', 'color: #007acc;', user);
     }, [user]);
     return (
         <>

@@ -1,7 +1,6 @@
 import * as EventosService from '../services/eventos.services';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import NavbarPage from '../pages/Navbar.page';
 
 function FormEventoNuevo(){
 
@@ -56,7 +55,6 @@ function FormEventoNuevo(){
 
     return (
         <div>
-            <NavbarPage></NavbarPage>
             <div className="container">
                 <h1>Evento nuevo</h1>
                 <form onSubmit={handleSubmit}>
