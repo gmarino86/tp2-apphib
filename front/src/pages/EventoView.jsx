@@ -4,12 +4,16 @@ import Participantes from "../components/Participantes/Participantes";
 import * as EventosServices from "../services/eventos.services";
 import * as ParticipantesServices from "../services/participantes.services";
 
+import { UserContext } from "../context/UserContext";
+
 function EventoView() {
   const { evento_id } = useParams();
   
   const [evento, setEvento] = useState({});
   const [participantes, setParticipantes] = useState([]);
   
+  const userLocale = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     if(evento_id){
       EventosServices.findByID(evento_id)
@@ -59,7 +63,9 @@ function EventoView() {
                 </div>
               </div>
             </div>
-            <Participantes players={participantes} evento_id={evento_id} />
+            <UserContext.Provider value={{ userLocale }}>
+              <Participantes players={participantes} evento_id={evento_id} />
+            </UserContext.Provider>
           </div>
         </div>
       </div>

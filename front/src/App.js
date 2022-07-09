@@ -7,12 +7,10 @@ import FormEventoNuevo from "./pages/FormEventoNuevo";
 import FormLogin from "./pages/FormLogin";
 import Contactos from "./pages/Contactos.page";
 import BuscarContactos from "./pages/BuscarContactos.page";
-
 import PageNotFound from "./pages/404";
 import "./App.css";
 
 function App() {
-  
   const navigate = useNavigate();
 
   function onLogin(user, token) {

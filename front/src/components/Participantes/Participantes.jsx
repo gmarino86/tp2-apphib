@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import * as bootstrap from 'bootstrap'
 
 import * as UserServices from "../../services/user.services";
@@ -6,9 +6,14 @@ import * as ParticipantesServices from "../../services/participantes.services";
 import UserEventosList from "../UserEventosList/UserEventosList";
 import ListAgregarPlayer from "../ListAgregarPlayer/ListAgregarPlayer";
 
+import { UserContext } from "../../context/UserContext";
+
 function Participantes({ players, evento_id }) {
   const [participantes, setParticipantes] = useState([]);
   const [estado, setEstado] = useState(0);
+
+  const { userLocale } = useContext(UserContext);
+  // console.log('%cParticipantes.jsx line:14 user_logged', 'color: #007acc;', userLocale);
 
   useEffect(() => {
     if(players !== []){
@@ -25,14 +30,14 @@ function Participantes({ players, evento_id }) {
         setParticipantes(users);
       });
       
-      const user_logged = JSON.parse(localStorage.getItem("user"))._id;
+      const user_logged = userLocale._id;
       players.forEach(participacion => {
         if(user_logged === participacion.user_id){
           setEstado(participacion.estado);
         }
       });
     }
-  }, [players]);
+  }, [players, userLocale]);
 
   function participar(){
     ParticipantesServices.participacion(evento_id, 1)
