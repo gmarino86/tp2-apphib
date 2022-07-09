@@ -10,8 +10,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.use('/api/eventos', EventosRoute);
 app.use('/api/user', UserRoute);
+app.use('/api/eventos', EventosRoute);
 app.use('/api/contactos', ContactosRoute);
 app.use('/api/participantes', ParticipantesRoute);
 

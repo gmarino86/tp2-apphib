@@ -6,7 +6,7 @@ import logo from "../images/logo-nuevo.jpeg"
 import { useEffect } from "react";
 
 function Navbar() {
-  
+  // eslint-disable-next-line
   const [user, setUser] = useState(null);
 
   let navigate = useNavigate();
@@ -15,7 +15,8 @@ function Navbar() {
     if(localStorage.getItem("user")){
       setUser(JSON.parse(localStorage.getItem("user")));
     }
-  }, [user]);
+    // eslint-disable-next-line
+  }, []);
 
 
   function logout(){
@@ -69,7 +70,7 @@ function Navbar() {
                 </>
                 )}
                 {localStorage.getItem("user") ? (
-                <button className="btn btn-sm btn-outline-success my-2 my-sm-0" type="button" onClick={logout}>Salir ({user.name} {user.lastName})</button>
+                <button className="btn btn-sm btn-outline-success my-2 my-sm-0" type="button" onClick={logout}>Salir </button>
                 ) : ("")}
                 
                 
