@@ -34,11 +34,10 @@ async function participacion(evento_id, user_id, estado){
     const db = client.db('armaelequipo')
     const collection = db.collection('participantes')
     const eventos = await collection.findOneAndUpdate(
-        { evento_id: ObjectId(evento_id), user_id: ObjectId(user_id) },
+        { evento_id: new ObjectId(evento_id), user_id: new ObjectId(user_id) },
         { $set: { estado: estado , updated_at: new Date()} },
         { returnOriginal: false }
     )
-    await client.close()
     return eventos
 }
 
@@ -47,8 +46,8 @@ async function addContactToEvent(evento_id, user_id, estado){
     const db = client.db('armaelequipo')
     const collection = db.collection('participantes')
     const eventos = await collection.insertOne({ 
-        evento_id: ObjectId(evento_id), 
-        user_id: ObjectId(user_id),
+        evento_id: new ObjectId(evento_id), 
+        user_id: new ObjectId(user_id),
         estado: estado, 
         updated_at: new Date() 
     })

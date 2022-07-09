@@ -15,7 +15,6 @@ async function findByID(idEvento){
     const db = client.db('armaelequipo')
     const collection = db.collection('eventos')
     const evento = await collection.findOne({_id: ObjectId(idEvento)})
-    await client.close()
     return evento
 }
 
@@ -24,7 +23,6 @@ async function create(event){
     const db = client.db('armaelequipo')
     const collection = db.collection('eventos')
     const evento = await collection.insertOne(event)
-    await client.close()
     return evento
 }
 
@@ -33,7 +31,6 @@ async function findArray(eventos){
     const db = client.db('armaelequipo')
     const collection = db.collection('eventos')
     const e = await collection.find({_id: {$in: eventos.map(e => ObjectId(e.evento_id))}}).toArray()
-    await client.close()
     return e
 }
 

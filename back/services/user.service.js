@@ -35,7 +35,6 @@ async function login({mail, pass}){
     const db = client.db('armaelequipo')
     const collection = db.collection('user')
     const userDB = await collection.findOne({mail})
-    await client.close()
     if(userDB){
         const isMatch = await bcrypt.compare(pass, userDB.pass)
         if(isMatch){
