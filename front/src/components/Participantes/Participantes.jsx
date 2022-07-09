@@ -12,6 +12,7 @@ function Participantes({ players, evento_id }) {
   const [participantes, setParticipantes] = useState([]);
   const [estado, setEstado] = useState(0);
 
+  // Aca el uso del contexto
   const { userLocale } = useContext(UserContext);
   // console.log('%cParticipantes.jsx line:14 user_logged', 'color: #007acc;', userLocale);
 
