@@ -63,6 +63,7 @@ function EventoView() {
                 </div>
               </div>
             </div>
+            {/* Aca el provider del Contexto */}
             <UserContext.Provider value={{ userLocale }}>
               <Participantes players={participantes} evento_id={evento_id} />
             </UserContext.Provider>
