@@ -8,6 +8,8 @@ import FormLogin from "./pages/FormLogin";
 import Contactos from "./pages/Contactos.page";
 import BuscarContactos from "./pages/BuscarContactos.page";
 import PageNotFound from "./pages/404";
+import PageSocket from "./pages/PageSocket";
+
 import "./App.css";
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
         <Route path="/evento/crear" element={<FormEventoNuevo />} />
         <Route path="/contactos" element={<Contactos />} />
         <Route path="/buscarContactos" element={<BuscarContactos />} />
+        <Route path="/socket" element={<PageSocket />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
