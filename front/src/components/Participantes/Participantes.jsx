@@ -14,7 +14,6 @@ function Participantes({ players, evento_id }) {
 
   // Aca el uso del contexto
   const { userLocale } = useContext(UserContext);
-  // console.log('%cParticipantes.jsx line:14 user_logged', 'color: #007acc;', userLocale);
 
   useEffect(() => {
     if(players !== []){
@@ -69,7 +68,6 @@ function Participantes({ players, evento_id }) {
         <div className="card-header">
           <div className="d-flex justify-content-between">
             <h2 className="mt-3">Participantes</h2>
-            {/* <button className="btn" type="button" data-bs-toggle="modal" data-bs-target="#modalAddPlayer"><i className="bi bi-person-plus-fill"></i></button> */}
             <button className="btn" type="button" onClick={openModal}><i className="bi bi-person-plus-fill"></i></button>
           </div>
         </div>

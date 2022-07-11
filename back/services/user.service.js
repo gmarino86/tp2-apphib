@@ -9,7 +9,6 @@ async function findByID(user_id){
     const db = client.db('armaelequipo')
     const collection = db.collection('user')
     const user = await collection.findOne({_id: ObjectId(user_id)})
-    await client.close()
     return {...user, pass: undefined}
 }
 
@@ -23,7 +22,6 @@ async function create(user){
         const passHash = await bcrypt.hash(user.pass, salt)
         user.pass = passHash
         const result = await collection.insertOne(user)
-        await client.close()
         return {...user, _id: result.insertedId}
     } else {
         throw new Error({ "message" : 'El usuario ya existe'})
@@ -61,7 +59,6 @@ async function findAllContacts(friend_ids){
     users.map(user => {
         contacts.push({...user, pass: undefined})
     })
-    await client.close()
     return contacts
 }
 
@@ -79,7 +76,6 @@ async function findAllPlayers(user_ids){
     jugadores.map(user => {
         players.push({...user, pass: undefined})
     })
-    await client.close()
     return players
 }
 
