@@ -9,6 +9,9 @@ import Contactos from "./pages/Contactos.page";
 import BuscarContactos from "./pages/BuscarContactos.page";
 import PageNotFound from "./pages/404";
 import PageSocket from "./pages/PageSocket";
+import FormOlvidePass from "./pages/FormOlvidePass";
+import FormNewPass from "./pages/FormNewPass";
+import PassSended from "./pages/PassSended";
 
 import "./App.css";
 
@@ -31,6 +34,9 @@ function App() {
         <Route path="/evento/crear" element={<FormEventoNuevo />} />
         <Route path="/contactos" element={<Contactos />} />
         <Route path="/buscarContactos" element={<BuscarContactos />} />
+        <Route path="/olvide-password" element={<FormOlvidePass />} />
+        <Route path="/new-pass" element={<FormNewPass />} />
+        <Route path="/pass-sended" element={<PassSended />} />
         <Route path="/socket" element={<PageSocket />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

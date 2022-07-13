@@ -8,6 +8,8 @@ import UserRoute from './routes/user.route.js';
 import ContactosRoute from './routes/contactos.route.js';
 import ParticipantesRoute from './routes/participantes.route.js';
 
+// import EnviarMail from './helper/nodemailer.js';
+
 const app = express()
 const server = createServer(app)
 const serverSocket = new SocketIO.Server(server, {
@@ -56,7 +58,6 @@ app.get('/hola', (req, res) => {
     }
     res.send('Hola mundo')
 })
-
 
 
 

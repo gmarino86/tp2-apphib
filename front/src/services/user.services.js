@@ -75,10 +75,37 @@ async function getAllPlayers(user_ids){
     }
 }
 
+async function olvidePass(mailOfPass) {
+    return fetch(`${URL_API}/api/user/olvide-pass`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(mailOfPass)
+    })
+    .then(response => response.json());
+}
+
+async function updatePass(mail, pass) {
+    return fetch(`${URL_API}/api/user/update-pass`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            mail,
+            pass
+        })
+    })
+    .then(response => response.json());
+}
+
 export {
     create,
     findByID,
     login,
     getAllUsers,
-    getAllPlayers
+    getAllPlayers,
+    olvidePass,
+    updatePass
 }
