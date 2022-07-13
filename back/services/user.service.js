@@ -1,7 +1,6 @@
 import { ObjectId, MongoClient } from 'mongodb'
 import bcrypt from 'bcrypt'
 
-
 const client = new MongoClient('mongodb://127.0.0.1:27017')
 
 async function findByID(user_id){
@@ -79,11 +78,36 @@ async function findAllPlayers(user_ids){
     return players
 }
 
+async function findByEmail(mail){
+    await client.connect()
+    const db = client.db('armaelequipo')
+    const collection = db.collection('user')
+    const user = await collection.findOne({mail: `${mail.email}`})
+    return {...user, pass: undefined}
+}
+
+async function updatePass(data) {
+    await client.connect()
+    const db = client.db('armaelequipo')
+    const collection = db.collection('user')
+    const user = await collection.findOne({mail: data.mail})
+    if(user){
+        const salt = await bcrypt.genSalt(10)
+        const passHash = await bcrypt.hash(data.pass, salt)
+        await collection.updateOne({mail: data.mail}, {$set: {pass: passHash}})
+        return true
+    }
+    return false
+}
+
+
 export {
     findAllPlayers,
     findAllContacts,
     findByID,
     create,
-    login
+    login,
+    findByEmail,
+    updatePass
 }
 

@@ -51,7 +51,7 @@ function FormLogin({ onLogin }) {
             />
           </div>
           <div className="form-group small clearfix">
-            <a href="/" className="forgot-link">
+            <a href="/olvide-password" className="forgot-link">
               Olvidaste tu contraseña?
             </a>
           </div>

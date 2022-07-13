@@ -11,7 +11,6 @@ function autorization(req, res, next) {
     }
 }
 
-
 export {
     autorization
 }
