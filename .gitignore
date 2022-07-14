@@ -10,6 +10,7 @@
 
 # production
 /build
+/build/*
 
 # misc
 .DS_Store
@@ -23,3 +24,41 @@ yarn-debug.log*
 yarn-error.log*
 back/node_modules/*
 front/node_modules/*
+front/build/asset-manifest.json
+front/build/android-icon-144x144.png
+front/build/android-icon-192x192.png
+front/build/android-icon-36x36.png
+front/build/android-icon-48x48.png
+front/build/android-icon-72x72.png
+front/build/android-icon-96x96.png
+front/build/apple-icon-114x114.png
+front/build/apple-icon-120x120.png
+front/build/apple-icon-144x144.png
+front/build/apple-icon-152x152.png
+front/build/apple-icon-180x180.png
+front/build/apple-icon-57x57.png
+front/build/apple-icon-60x60.png
+front/build/apple-icon-72x72.png
+front/build/apple-icon-76x76.png
+front/build/apple-icon-precomposed.png
+front/build/apple-icon.png
+front/build/browserconfig.xml
+front/build/favicon-16x16.png
+front/build/favicon-32x32.png
+front/build/favicon-96x96.png
+front/build/favicon.ico
+front/build/index.html
+front/build/logo192.png
+front/build/logo512.png
+front/build/manifest.json
+front/build/ms-icon-144x144.png
+front/build/ms-icon-150x150.png
+front/build/ms-icon-310x310.png
+front/build/ms-icon-70x70.png
+front/build/robots.txt
+front/build/static/css/main.ef79079d.css
+front/build/static/css/main.ef79079d.css.map
+front/build/static/js/main.e4618fb2.js
+front/build/static/js/main.e4618fb2.js.LICENSE.txt
+front/build/static/js/main.e4618fb2.js.map
+front/build/static/media/logo-nuevo.c03fdf7a094cdd99d4bd.jpeg
