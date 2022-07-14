@@ -1,5 +1,5 @@
 {
-  "name": "tp2-apphib",
+  "name": "armaelequipo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "socket.io-client": "^4.5.1",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://armaelequipo.com.ar/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
